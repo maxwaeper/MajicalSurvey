@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="MajicalSurveyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="MajicalSurveyModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MajicalSurveyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="MajicalSurveyModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SurveySet" EntityType="MajicalSurveyModel.Survey" />
+          <EntitySet Name="QuestionsSet" EntityType="MajicalSurveyModel.Questions" />
+          <EntitySet Name="AnswersSet" EntityType="MajicalSurveyModel.Answers" />
+          <AssociationSet Name="SurveyQuestions" Association="MajicalSurveyModel.SurveyQuestions">
+            <End Role="Survey" EntitySet="SurveySet" />
+            <End Role="Questions" EntitySet="QuestionsSet" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionsAnswers" Association="MajicalSurveyModel.QuestionsAnswers">
+            <End Role="Questions" EntitySet="QuestionsSet" />
+            <End Role="Answers" EntitySet="AnswersSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="MajicalSurveyModel.SurveyQuestions" FromRole="Survey" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Survey" Relationship="MajicalSurveyModel.SurveyQuestions" FromRole="Questions" ToRole="Survey" />
+          <Property Name="SurveyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="MajicalSurveyModel.QuestionsAnswers" FromRole="Questions" ToRole="Answers" />
+        </EntityType>
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Questions" Relationship="MajicalSurveyModel.QuestionsAnswers" FromRole="Answers" ToRole="Questions" />
+          <Property Name="QuestionsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SurveyQuestions">
+          <End Type="MajicalSurveyModel.Survey" Role="Survey" Multiplicity="1" />
+          <End Type="MajicalSurveyModel.Questions" Role="Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuestionsAnswers">
+          <End Type="MajicalSurveyModel.Questions" Role="Questions" Multiplicity="1" />
+          <End Type="MajicalSurveyModel.Answers" Role="Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="QuestionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="MajicalSurveyModel" />
+        <Alias Key="Target" Value="MajicalSurveyModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="MajicalSurveyModelContainer" StorageEntityContainer="MajicalSurveyModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
