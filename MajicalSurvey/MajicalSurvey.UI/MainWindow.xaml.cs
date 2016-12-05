@@ -24,5 +24,7 @@ namespace MajicalSurvey.UI
         {
             InitializeComponent();
         }
+
+
     }
 }
