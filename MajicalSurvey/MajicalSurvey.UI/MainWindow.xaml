@@ -7,7 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="65" Margin="52,61,0,0" VerticalAlignment="Top" Width="118" Click="button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="pass_survey" Content="Pass a survey" HorizontalAlignment="Center" Height="65"  VerticalAlignment="Center" Width="150" Click="pass_survey_Clicked"/>
+        <Button Grid.Column="1" x:Name="create_survey" Content="Create new survey" HorizontalAlignment="Center" Height="65"  VerticalAlignment="Center" Width="150" Click="create_survey_Clicked"/>
+        <Button Grid.Row="1" Grid.Column="0" x:Name="statistic" Content="Show statistic" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="150" Click="statistic_Clicked"/>
 
     </Grid>
 </Window>

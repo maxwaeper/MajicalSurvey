@@ -25,6 +25,22 @@ namespace MajicalSurvey.UI
             InitializeComponent();
         }
 
+        private void statistic_Clicked(object sender, RoutedEventArgs e)
+        {
+            Watch_the_result watch = new Watch_the_result();
+            watch.ShowDialog();
+        }
 
+        private void create_survey_Clicked(object sender, RoutedEventArgs e)
+        {
+            Create_survey create = new Create_survey();
+            create.ShowDialog();
+        }
+
+        private void pass_survey_Clicked(object sender, RoutedEventArgs e)
+        {
+            Pass_survey pass = new Pass_survey();
+            pass.ShowDialog();
+        }
     }
 }
