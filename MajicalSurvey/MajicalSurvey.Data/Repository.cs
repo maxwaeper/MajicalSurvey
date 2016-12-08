@@ -18,7 +18,7 @@ namespace MajicalSurvey.Data
             _context = new Context();
         }
 
-        public virtual List<T> GetAllElements()
+        public virtual IEnumerable<T> GetAllElements()
         { 
             return _context.Set<T>().ToList();
         }

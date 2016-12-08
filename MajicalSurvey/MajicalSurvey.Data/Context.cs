@@ -13,7 +13,7 @@ namespace MajicalSurvey.Data
         public DbSet<Questions> Questions { get; set;}
         public DbSet<Answers> Answers { get; set; }
 
-        public Context():base("localsql")
+        public Context():base("MajicalSurvey")
         {
 
         }
