@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace MajicalSurvey.Data
 {
-    public class Questions
+    public class Surveys
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public List<Answers> Answers { get; set; }
     }
 }

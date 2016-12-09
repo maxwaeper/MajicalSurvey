@@ -23,9 +23,9 @@ namespace MajicalSurvey.Data
             return _context.Set<T>().ToList();
         }
 
-        public virtual IQueryable<T> GetCertainElement(Expression<Func<T, bool>> predicate)
+        public virtual T GetCertainElement(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().Where(predicate);
+            return _context.Set<T>().Where(predicate).SingleOrDefault();
         }
 
         public virtual void Insert(T entity)

@@ -49,19 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Answers.cs" />
+    <Compile Include="Migrations\201612091829178_MinorChanges.cs" />
+    <Compile Include="Migrations\201612091829178_MinorChanges.Designer.cs">
+      <DependentUpon>201612091829178_MinorChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AnswerRepository.cs" />
+    <Compile Include="Entities\Answers.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IRepositoties\IAnswerRepository.cs" />
+    <Compile Include="IRepositoties\IQuestionRepository.cs" />
+    <Compile Include="IRepositoties\IRepository.cs" />
+    <Compile Include="IRepositoties\ISurveyRepository.cs" />
     <Compile Include="Migrations\201612061845084_Initialize.cs" />
     <Compile Include="Migrations\201612061845084_Initialize.Designer.cs">
       <DependentUpon>201612061845084_Initialize.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Questions.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="SurveyRepository.cs" />
-    <Compile Include="Surveys.cs" />
+    <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Entities\Questions.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\SurveyRepository.cs" />
+    <Compile Include="Entities\Surveys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +79,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612061845084_Initialize.resx">
       <DependentUpon>201612061845084_Initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612091829178_MinorChanges.resx">
+      <DependentUpon>201612091829178_MinorChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace MajicalSurvey.Data
     {
         IEnumerable<T> GetAllElements();
         void Insert(T entity);
-        IQueryable<T> GetCertainElement(Expression<Func<T, bool>> predicate);
+        T GetCertainElement(Expression<Func<T, bool>> predicate);
         void Delete(Expression<Func<T, bool>> predicate);
         void Save();
 
