@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Pass a survey" Height="300" Width="300">
+        Title="Pass a survey" Height="300" Width="300" WindowState="Maximized">
     <Grid>
         
     </Grid>

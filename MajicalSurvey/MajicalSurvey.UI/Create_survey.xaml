@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Create new survey" Height="300" Width="300">
+        Title="Create new survey" Height="400" Width="900" WindowState="Maximized">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="200"  
+                  VerticalAlignment="Center" Width="225" Grid.RowSpan="4">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding ID}" Width="25"/>
+                    <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label Grid.Column="1" Grid.Row="0" Content="Put a name of the question"
+               Height="30"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="Question_name"
+               Height="30" Width="200"/>
+
+        <Button Grid.Column="1" Grid.Row="3" Content="Add" Width="50" Height="50" Click="Add_Clicked" Margin="198.333,6.333,198.333,25.667" />
+        <Button Grid.Column="1" Grid.Row="3" Content="Delete" HorizontalAlignment="Left" 
+                Width="50" Height="50" Click="Delete_Clicked" />
+
     </Grid>
 </Window>

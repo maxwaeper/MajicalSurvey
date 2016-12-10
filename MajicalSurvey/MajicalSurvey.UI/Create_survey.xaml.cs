@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace MajicalSurvey.UI
 {
     /// <summary>
@@ -22,6 +23,19 @@ namespace MajicalSurvey.UI
         public Create_survey()
         {
             InitializeComponent();
+        }
+        int k = 1;
+        private void Delete_Clicked(object sender, RoutedEventArgs e)
+        {
+           // listView.Items.Add(new Questions { ID = k, Name = Question_name.Text });
+
+            k++;
+            Question_name.Clear();
+        }
+
+        private void Add_Clicked(object sender, RoutedEventArgs e)
+        {
+            listView.SelectedItems.Remove(0);
         }
     }
 }
