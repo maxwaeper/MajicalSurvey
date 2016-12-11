@@ -10,6 +10,6 @@ namespace MajicalSurvey.Data
     {
         List<Answers> GetAllAnswers(int questionId);
 
-        void ScoreIncrement(string name);
+       // void ScoreIncrement(string name);
     }
 }

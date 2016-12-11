@@ -12,12 +12,13 @@ namespace MajicalSurvey.Data
         {
             return GetAllElements().Where(x => x.Question.Id == questionId).ToList();
         }
+        
 
-        public void ScoreIncrement(string name)
+        /*public void ScoreIncrement(string name)
         {
             var score = GetCertainElement(x => x.Name == name);
             score.Score++;
             Save();
-        }
+        }*/
     }
 }

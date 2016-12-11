@@ -49,9 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Users.cs" />
+    <Compile Include="IRepositoties\IUsers.cs" />
+    <Compile Include="MethodsForStatistics.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.Designer.cs">
       <DependentUpon>201612091829178_MinorChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612111610106_AddUser.cs" />
+    <Compile Include="Migrations\201612111610106_AddUser.Designer.cs">
+      <DependentUpon>201612111610106_AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612111645083_AddUseransw.cs" />
+    <Compile Include="Migrations\201612111645083_AddUseransw.Designer.cs">
+      <DependentUpon>201612111645083_AddUseransw.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Entities\Answers.cs" />
@@ -71,6 +82,7 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SurveyRepository.cs" />
     <Compile Include="Entities\Surveys.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612091829178_MinorChanges.resx">
       <DependentUpon>201612091829178_MinorChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612111610106_AddUser.resx">
+      <DependentUpon>201612111610106_AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612111645083_AddUseransw.resx">
+      <DependentUpon>201612111645083_AddUseransw.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
