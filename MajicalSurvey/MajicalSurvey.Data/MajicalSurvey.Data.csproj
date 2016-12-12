@@ -73,7 +73,6 @@
     <Compile Include="Entities\Surveys.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +82,6 @@
     <EmbeddedResource Include="Migrations\201612091829178_MinorChanges.resx">
       <DependentUpon>201612091829178_MinorChanges.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
