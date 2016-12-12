@@ -20,10 +20,10 @@
         </Grid.RowDefinitions>
 
         <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="200"  
-                  VerticalAlignment="Center" Width="225" Grid.RowSpan="4">
+                  VerticalAlignment="Center" Width="225" Grid.RowSpan="4" SelectionChanged="Item_Selection">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding ID}" Width="25"/>
+                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="25"/>
                     <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="200"/>
                 </GridView>
             </ListView.View>
@@ -34,9 +34,42 @@
         <TextBox Grid.Column="1" Grid.Row="0" Name="Question_name"
                Height="30" Width="200"/>
 
-        <Button Grid.Column="1" Grid.Row="3" Content="Add" Width="50" Height="50" Click="Add_Clicked" Margin="198.333,6.333,198.333,25.667" />
+        <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
+            <RadioButton GroupName="Answer_variant" Content="Radiobuttons" Name="Radiobuttons" Checked="Radiobuttons_Checked"/>
+            <RadioButton GroupName="Answer_variant" Content="Cheakboxes" Name="Cheakboxes" Checked="Cheakboxes_Checked"/>
+            <RadioButton GroupName="Answer_variant" Content="String" Name="String"/>
+            <RadioButton GroupName="Answer_variant" Content="Number" Name="Number"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Name="stackpanel">
+
+            <Label Content="1"  x:Name="first" Visibility="Hidden" HorizontalAlignment="Left"/>
+            <TextBox Name="First" Width="300" Visibility="Hidden" HorizontalAlignment="Left"/>
+
+            <Label Content="2" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="3" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden" x:Name="Third"/>
+            <Label Content="4" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="5" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="6" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="7" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="8" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="9" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+            <Label Content="10" Visibility="Hidden"/>
+            <TextBox Visibility="Hidden"/>
+        </StackPanel>
+
+        <Button Grid.Column="1" Grid.Row="3" Content="Add" Width="50" Height="50" Click="Add_Clicked"
+                HorizontalAlignment="Right" Margin="0 0 40 0" />
         <Button Grid.Column="1" Grid.Row="3" Content="Delete" HorizontalAlignment="Left" 
-                Width="50" Height="50" Click="Delete_Clicked" />
+                Width="50" Height="50" Click="Delete_Clicked"  Margin="40 0 0 0"/>
 
     </Grid>
 </Window>
