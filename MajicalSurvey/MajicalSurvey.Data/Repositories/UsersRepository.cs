@@ -15,5 +15,10 @@ namespace MajicalSurvey.Data.Repositories
             return GetCertainElement(x => x.Name == name);
         }
 
+        public List<Users> GetUsersAnswers(int answersId)
+        {
+            return GetAllElements().Where(x => x.Answer.Id == answersId).ToList();
+        }
+
     }
 }

@@ -24,5 +24,6 @@ namespace MajicalSurvey.UI
             InitializeComponent();
             Name.Visibility = Visibility.Hidden;
         }
+
     }
 }

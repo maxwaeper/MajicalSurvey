@@ -1,4 +1,5 @@
 ﻿using MajicalSurvey.Data.Entities;
+using MajicalSurvey.Data.IRepositoties;
 using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace MajicalSurvey.Data
             return l;
         }
 
+
         public List<Answers> UsersAnswers(string UsersName)
         {
             UsersRepository user = new UsersRepository();
@@ -28,26 +30,35 @@ namespace MajicalSurvey.Data
             return a;
         }
 
+
         public int NuberOfAnswersForUser (List<Answers> ans)
         {
             int k = ans.Count();
             return k;
         }
 
-        /*public List<Users> UsersOfServey (string surveyname)
+
+        public List<Users> UsersOfSurvey(string SurveyName)
         {
-            ISurveyRepository sur = new SurveyRepository();
-            Surveys OneSurvey = sur.GetSurveyByName(surveyname);
-            IQuestionRepository ques = new QuestionRepository();
-            List<Questions> l = ques.GetAllQuestions(OneSurvey.Id);
+            List<Questions> l = QuestionsBySurvey(SurveyName);
+            List<Users> user = new List<Users>();
             foreach (var question in l)
             {
-                if ( )
+                IAnswerRepository ans = new AnswerRepository();
+                List<Answers> a = ans.GetAllAnswers(question.Id);
+                foreach (var answer in a)
+                {
+                    IUsers use = new UsersRepository();
+                    List<Users> u = use.GetUsersAnswers(answer.Id);
+                    foreach (var item in u)
+                    {
+                        user.Add(item);
+                    }
+                }
             }
-            }
-            */
+            return user;
+        }
 
-        
 
-    }
+        }
 }
