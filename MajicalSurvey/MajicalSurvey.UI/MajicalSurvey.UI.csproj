@@ -126,6 +126,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MajicalSurvey.Data\MajicalSurvey.Data.csproj">
+      <Project>{f103c3b3-1161-44b5-baa4-d0fa50a3d48c}</Project>
+      <Name>MajicalSurvey.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

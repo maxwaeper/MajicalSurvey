@@ -14,5 +14,6 @@ namespace MajicalSurvey.Data.Repositories
         {
             return GetCertainElement(x => x.Name == name);
         }
+
     }
 }

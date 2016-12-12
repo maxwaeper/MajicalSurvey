@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Watch the result" Height="300" Width="300" WindowState="Maximized">
-    <Grid>
-        <Label x:Name="label" Content="Here goes statistic" HorizontalAlignment="Left" Height="39" Margin="52,23,0,0" VerticalAlignment="Top" Width="178"/>
+        Title="Watch the result" Height="300" Width="746" WindowState="Maximized">
+    <Grid Margin="10,0,0,0">
+        <Label x:Name="label" Content="Here goes statistic" HorizontalAlignment="Left" Height="39" Margin="19,0,0,0" VerticalAlignment="Top" Width="178"/>
+        <ComboBox Margin="10,38,453,185" >
+            <ComboBoxItem Content="Statistics for all surveys"></ComboBoxItem>
+            <ComboBoxItem Content="Statistics for a particular survey"></ComboBoxItem>
 
+        </ComboBox>
+        <TextBox Visibility="Visible" Name="Name" Background="AliceBlue" Margin="308,38,196,185"/>
+        <Button Margin="564,38,32,185">Show</Button>
+        <DataGrid Margin="0,102,0,0"></DataGrid>
     </Grid>
 </Window>

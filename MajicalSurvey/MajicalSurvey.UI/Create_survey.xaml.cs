@@ -36,6 +36,7 @@ namespace MajicalSurvey.UI
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
             listView.SelectedItems.Remove(0);
+            answer.Visibility = Visibility.Visible;
         }
     }
 }
