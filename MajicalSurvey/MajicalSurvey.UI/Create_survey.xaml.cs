@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MajicalSurvey.Data;
 
 
 namespace MajicalSurvey.UI
@@ -24,18 +25,61 @@ namespace MajicalSurvey.UI
         {
             InitializeComponent();
         }
+
+        //public int k { get { return k; } set { value = 1; } }
+
         int k = 1;
-        private void Delete_Clicked(object sender, RoutedEventArgs e)
+        private void Add_Clicked(object sender, RoutedEventArgs e)
         {
-           // listView.Items.Add(new Questions { ID = k, Name = Question_name.Text });
+            string error = "Something is missed";
+
+            if (string.IsNullOrWhiteSpace(Question_name.Text))
+            {
+                MessageBox.Show("You haven't typed a question", error);
+                return;
+            }
+
+            if ((Radiobuttons.IsChecked == false) && (Cheakboxes.IsChecked == false) && (String.IsChecked == false))
+            {
+                MessageBox.Show("You haven't chosen an answer variant", error);
+                return;
+            }
+
+            listView.Items.Add(new Questions { Id = k, Name = Question_name.Text });
 
             k++;
             Question_name.Clear();
+            foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
+
+            // here should go textbox clearing and label hiding
+
         }
 
-        private void Add_Clicked(object sender, RoutedEventArgs e)
+        private void Delete_Clicked(object sender, RoutedEventArgs e)
         {
             listView.SelectedItems.Remove(0);
+
+        }
+
+        private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (Control item in stackpanel.Children)
+            {
+                item.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Cheakboxes_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (Control item in stackpanel.Children)
+            {
+                item.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Item_Selection(object sender, SelectionChangedEventArgs e)
+        {
+            Question_name.Text = listView.SelectedItem.ToString();
         }
     }
 }

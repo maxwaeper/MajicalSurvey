@@ -9,6 +9,7 @@ namespace MajicalSurvey.Data
     public interface IAnswerRepository
     {
         List<Answers> GetAllAnswers(int questionId);
+        List<Answers> GetAnswersForUser(string name);
 
        // void ScoreIncrement(string name);
     }
