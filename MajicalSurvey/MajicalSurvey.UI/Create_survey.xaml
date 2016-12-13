@@ -5,22 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Create new survey" Height="400" Width="900" WindowState="Maximized">
+        Title="Create new survey" Height="800" Width="900" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-
         </Grid.RowDefinitions>
 
-        <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="200"  
-                  VerticalAlignment="Center" Width="225" Grid.RowSpan="4" SelectionChanged="Item_Selection">
+        <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
+                  VerticalAlignment="Top" Width="240" Margin="85" Grid.RowSpan="4" SelectionChanged="Item_Selection">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="25"/>
@@ -29,47 +27,92 @@
             </ListView.View>
         </ListView>
 
-        <Label Grid.Column="1" Grid.Row="0" Content="Put a name of the question"
-               Height="30"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="Question_name"
-               Height="30" Width="200"/>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Name="Survey_name" Text="(Name your survey)" 
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="300" 
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Put a name of the question"
+               Height="30" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="Question_name" Height="60" Width="200" 
+                     VerticalAlignment="Center" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" 
+                     AcceptsReturn="True"/>
+
+        </Grid>
+        
+      
 
         <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
-            <RadioButton GroupName="Answer_variant" Content="Radiobuttons" Name="Radiobuttons" Checked="Radiobuttons_Checked"/>
-            <RadioButton GroupName="Answer_variant" Content="Cheakboxes" Name="Cheakboxes" Checked="Cheakboxes_Checked"/>
-            <RadioButton GroupName="Answer_variant" Content="String" Name="String"/>
-            <RadioButton GroupName="Answer_variant" Content="Number" Name="Number"/>
+            <RadioButton Content="Radiobuttons" Name="Radiobuttons" Margin="5" Checked="Radiobuttons_Checked"/>
+            <RadioButton Content="Cheakboxes" Name="Cheakboxes" Margin="5" Checked="Cheakboxes_Checked"/>
+            <RadioButton Content="String" Name="String" Margin="5"/>
+            <RadioButton Content="Number" Name="Number" Margin="5"/>
         </StackPanel>
 
+        
         <StackPanel Grid.Column="1" Grid.Row="2" Name="stackpanel">
+            <Grid Name="grid" Margin="10 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Label Content="1"  x:Name="first" Visibility="Hidden" HorizontalAlignment="Left"/>
-            <TextBox Name="First" Width="300" Visibility="Hidden" HorizontalAlignment="Left"/>
+            <Label Content="1"  x:Name="first" Visibility="Visible" HorizontalAlignment="Left" 
+                   Grid.Column="0" Grid.Row="0" Margin="1"/>
+            <TextBox x:Name="First" Width="300" Visibility="Visible" HorizontalAlignment="Left"
+                     Grid.Column="1" Grid.Row="0" Margin="1"/>
 
-            <Label Content="2" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="3" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden" x:Name="Third"/>
-            <Label Content="4" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="5" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="6" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="7" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="8" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="9" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
-            <Label Content="10" Visibility="Hidden"/>
-            <TextBox Visibility="Hidden"/>
+                <Label Content="2" Visibility="Hidden" Grid.Column="0" Grid.Row="1" Margin="1"/>
+                <TextBox Visibility="Hidden"  Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="1"/>
+                <Label Content="3" Visibility="Hidden" Grid.Column="0" Grid.Row="2" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="1"/>
+                <Label Content="4" Visibility="Hidden" Grid.Column="0" Grid.Row="3" Margin="1" />
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Margin="1"/>
+                <Label Content="5" Visibility="Hidden" Grid.Column="0" Grid.Row="4" Margin="1"/>
+                <TextBox Visibility="Hidden"  Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Margin="1"/>
+                <Label Content="6" Visibility="Hidden" Grid.Column="0" Grid.Row="5" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Margin="1"/>
+                <Label Content="7" Visibility="Hidden" Grid.Column="0" Grid.Row="6" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Margin="1"/>
+                <Label Content="8" Visibility="Hidden" Grid.Column="0" Grid.Row="7" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Margin="1"/>
+                <Label Content="9" Visibility="Hidden" Grid.Column="0" Grid.Row="8" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="8" Margin="1"/>
+                <Label Content="10" Visibility="Hidden" Grid.Column="0" Grid.Row="9" Margin="1"/>
+                <TextBox Visibility="Hidden" Width="300"  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="9" Margin="1"/>
+               
+            </Grid>
         </StackPanel>
 
-        <Button Grid.Column="1" Grid.Row="3" Content="Add" Width="50" Height="50" Click="Add_Clicked"
-                HorizontalAlignment="Right" Margin="0 0 40 0" />
-        <Button Grid.Column="1" Grid.Row="3" Content="Delete" HorizontalAlignment="Left" 
-                Width="50" Height="50" Click="Delete_Clicked"  Margin="40 0 0 0"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Add" Width="50" Height="50" Click="Add_Clicked"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="40" />
+        <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Width="50" Height="50" Click="Delete_Clicked"  Margin="40"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="50" Height="50" HorizontalAlignment="Left" 
+              VerticalAlignment="Bottom"  Margin="40"/>
 
     </Grid>
 </Window>
