@@ -57,13 +57,13 @@ namespace MajicalSurvey.UI
 
         private void Delete_Clicked(object sender, RoutedEventArgs e)
         {
-            listView.SelectedItems.Remove(0);
+            listView.Items.Remove(listView.SelectedItem);
 
         }
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Control item in stackpanel.Children)
+            foreach (Control item in grid.Children)
             {
                 item.Visibility = Visibility.Visible;
             }
@@ -71,7 +71,7 @@ namespace MajicalSurvey.UI
 
         private void Cheakboxes_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Control item in stackpanel.Children)
+            foreach (Control item in grid.Children)
             {
                 item.Visibility = Visibility.Visible;
             }
@@ -79,7 +79,8 @@ namespace MajicalSurvey.UI
 
         private void Item_Selection(object sender, SelectionChangedEventArgs e)
         {
-            Question_name.Text = listView.SelectedItem.ToString();
+            // Question_name.Text = { Binding Path = (Question)Name};
+            Question_name.Text = "hi";
         }
     }
 }
