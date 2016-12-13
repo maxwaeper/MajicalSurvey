@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MajicalSurvey.Data.Repositories
 {
-    public class UsersRepository : Repository<Users>, IUsers
+    public class UsersRepository : Repository<Users>, IUsersRepository
     {
         public Users AnswersOfAUser(string name)
         {

@@ -43,8 +43,8 @@
 
         <StackPanel Grid.Column="1" Grid.Row="2" Name="stackpanel">
 
-            <Label Content="1"  x:Name="first" Visibility="Hidden" HorizontalAlignment="Left"/>
-            <TextBox Name="First" Width="300" Visibility="Hidden" HorizontalAlignment="Left"/>
+            <Label Content="1"  x:Name="first" Visibility="Visible" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="First" Width="300" Visibility="Visible" HorizontalAlignment="Left"/>
 
             <Label Content="2" Visibility="Hidden"/>
             <TextBox Visibility="Hidden"/>

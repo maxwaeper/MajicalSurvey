@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace MajicalSurvey.Data.IRepositoties
 {
-    public interface IUsers
+    public interface IUsersRepository
     {
         List<Users> GetUsersAnswers(int answersId);
+
+        Users AnswersOfAUser(string name);
     }
 }

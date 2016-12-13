@@ -23,11 +23,13 @@ namespace MajicalSurvey.Data
 
         public List<Answers> UsersAnswers(string UsersName)
         {
-            UsersRepository user = new UsersRepository();
-            Users OneUser = user.AnswersOfAUser(UsersName);
-            IAnswerRepository answ = new AnswerRepository();
-            List<Answers> a = answ.GetAllAnswers(OneUser.Id);
-            return a;
+            
+                IUsersRepository user = new UsersRepository();
+                Users OneUser = user.AnswersOfAUser(UsersName);
+                IAnswerRepository answ = new AnswerRepository();
+                List<Answers> a = answ.GetAllAnswers(OneUser.Id);
+                return a;
+            
         }
 
 
@@ -48,7 +50,7 @@ namespace MajicalSurvey.Data
                 List<Answers> a = ans.GetAllAnswers(question.Id);
                 foreach (var answer in a)
                 {
-                    IUsers use = new UsersRepository();
+                    IUsersRepository use = new UsersRepository();
                     List<Users> u = use.GetUsersAnswers(answer.Id);
                     foreach (var item in u)
                     {
