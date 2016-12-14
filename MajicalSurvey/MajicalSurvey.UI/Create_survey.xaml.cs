@@ -29,20 +29,22 @@ namespace MajicalSurvey.UI
         //public int k { get { return k; } set { value = 1; } }
 
 
-        public void Cler_info()
+        public void Clear_info()
         {
             Question_name.Clear();
             foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
-           // grid.RowDefinitions.Clear();
+
+            // grid.RowDefinitions.Clear();
             //foreach (Window item in grid.Children)
             //{
             //    (TextBox)item.
             //}
-            //foreach (TextBox t in stackpanel_textboxes.Children)
-            //{
-            //    t.Clear();
+            foreach (TextBox t in stackpanel_textboxes.Children)
+            {
+                t.Clear();
 
-            //}
+            }
+            grid.Visibility = Visibility.Hidden;
             //for (int i = 0; i < grid.ColumnDefinitions.Count; i++)
             //{
 
@@ -55,6 +57,12 @@ namespace MajicalSurvey.UI
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
             string error = "Something is missed";
+
+            if (string.IsNullOrWhiteSpace(Survey_name.Text))
+            {
+                MessageBox.Show("You haven't named a survey", error);
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(Question_name.Text))
             {
@@ -72,7 +80,8 @@ namespace MajicalSurvey.UI
 
             k++;
 
-            Cler_info();
+            Clear_info();
+            if (k != 1) survey_textblock.Text = "You can rename your survey";
 
         }
 
@@ -84,20 +93,17 @@ namespace MajicalSurvey.UI
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Window item in grid.Children)
-            {
-                item.Visibility = Visibility.Visible;
-               
-            }
+            grid.Visibility = Visibility.Visible;
         }
 
         private void Cheakboxes_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Control item in grid.Children)
-            {
-                item.Visibility = Visibility.Visible;
+            //foreach (Control item in grid.Children)
+            //{
+            //    item.Visibility = Visibility.Visible;
 
-            }
+            //}
+            grid.Visibility = Visibility.Visible;
         }
 
         private void Item_Selection(object sender, SelectionChangedEventArgs e)
