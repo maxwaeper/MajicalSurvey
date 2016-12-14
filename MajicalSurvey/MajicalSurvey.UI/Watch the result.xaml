@@ -8,13 +8,13 @@
         Title="Watch the result" Height="300" Width="746" WindowState="Maximized">
     <Grid Margin="10,0,0,0">
         <Label x:Name="label" Content="Here goes statistic" HorizontalAlignment="Left" Height="39" Margin="19,0,0,0" VerticalAlignment="Top" Width="178"/>
-        <ComboBox Margin="10,38,453,185" >
-            <ComboBoxItem Content="Statistics for all surveys"></ComboBoxItem>
-            <ComboBoxItem Content="Statistics for a particular survey"></ComboBoxItem>
+        <ComboBox  Name="ComboBox" Margin="10,38,453,185" >
+            <ComboBoxItem Name ="all" Content="Statistics for all surveys"></ComboBoxItem>
+            <ComboBoxItem Name ="one" Content="Statistics for a particular survey"></ComboBoxItem>
 
         </ComboBox>
-        <TextBox Visibility="Visible" Name="Name" Background="AliceBlue" Margin="308,38,196,185"/>
-        <Button Margin="564,38,32,185">Show</Button>
+        <TextBox  Name="TextBox" Visibility="Visible" Background="AliceBlue" Margin="308,38,196,185"/>
+        <Button Margin="564,38,32,185" Click="Show_button_Clicked">Show</Button>
         <DataGrid Margin="0,102,0,0"></DataGrid>
     </Grid>
 </Window>
