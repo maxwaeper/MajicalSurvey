@@ -14,8 +14,11 @@ namespace MajicalSurvey.Data
             return GetAllElements().Where(x => x.Question.Id == questionId).ToList();
         }
 
-      
-         
+      public List<Answers> GetAnswers()
+        {
+            return GetAllElements().ToList();
+        }
+
         /*public List<Answers> GetAnswersForUser (string name)
         {
             return GetAllElements().Where(x => x.Users.Name == name).ToList();

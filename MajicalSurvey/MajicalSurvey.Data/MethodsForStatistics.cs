@@ -2,6 +2,7 @@
 using MajicalSurvey.Data.IRepositoties;
 using MajicalSurvey.Data.Repositories;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace MajicalSurvey.Data
 {
     public class MethodsForStatistics 
     {
+        private Context context;
         IUsersRepository user;
         IAnswerRepository answer;
         IQuestionRepository question;
@@ -20,7 +22,7 @@ namespace MajicalSurvey.Data
             user = new UsersRepository();
             answer = new AnswerRepository();
             question = new QuestionRepository();
-
+            context = new Context();
         }
         //public List<Questions> QuestionsBySurvey(string SurveyName)
         //{
@@ -47,6 +49,23 @@ namespace MajicalSurvey.Data
             return k;
         }
 
+        public List<Answers> GetUsersAnswersById(int id)
+        {
+            List<Answers> answers = answer.GetAnswers();
+            List<Users> users = user.GetAllUsers();
+            List<Answers> newAnswers = new List<Answers>();
+            foreach (var item in context.Users.Include(x=>x.Answers))
+            {
+                if (item.Id == id)
+                {
+                    foreach (var k in item.Answers)
+                    {
+                        newAnswers.Add(k);
+                    }
+                }
+            }
+            return newAnswers;
+        }
 
         //public List<Users> UsersOfSurvey(string SurveyName)
         //{
@@ -68,5 +87,5 @@ namespace MajicalSurvey.Data
         //}
 
 
-        }
+    }
 }

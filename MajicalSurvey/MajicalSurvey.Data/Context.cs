@@ -15,7 +15,7 @@ namespace MajicalSurvey.Data
         public DbSet<Answers> Answers { get; set; }
         public DbSet<Users> Users { get; set; }
 
-        public Context():base("localsql")
+        public Context():base("localSql")
         {
 
         }

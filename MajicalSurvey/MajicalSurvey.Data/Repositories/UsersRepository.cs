@@ -10,10 +10,27 @@ namespace MajicalSurvey.Data.Repositories
 {
     public class UsersRepository : Repository<Users>, IUsersRepository
     {
+        private Context _context;
+
+        public UsersRepository()
+        {
+            _context = new Context();
+        }
+
         public Users AnswersOfAUser(string name)
         {
             return GetCertainElement(x => x.Name == name);
         }
+
+        public List<Users> GetAllUsers()
+        {
+            return GetAllElements().ToList();
+        }
+
+        //public List<Answers> GetAnswersOfUser(int id)
+        //{
+        //    return GetAllElements().Where()
+        //}
 
         //public List<Users> GetUsersAnswers(int answersId)
         //{
