@@ -8,9 +8,9 @@ namespace MajicalSurvey.Data
 {
     public class QuestionRepository : Repository<Questions>, IQuestionRepository
     {
-        public List<Questions> GetAllQuestions(int surveyId)
+        public List<Questions> GetAllQuestions(string name)
         {
-            return GetAllElements().Where(x=>x.Survey.Id==surveyId).ToList();
+            return GetAllElements().Where(x=>x.Survey.Name==name).ToList();
         }
 
         public Questions GetQuestionByName(string name)
