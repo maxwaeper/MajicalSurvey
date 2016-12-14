@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MajicalSurvey.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,6 @@ namespace MajicalSurvey.Data
         {
             return GetAllElements().Where(x => x.Question.Id == questionId).ToList();
         }
-         
-        /*public List<Answers> GetAnswersForUser (string name)
-        {
-            return GetAllElements().Where(x => x.Users.Name == name).ToList();
-        }*/
-        /*public void ScoreIncrement(string name)
-        {
-            var score = GetCertainElement(x => x.Name == name);
-            score.Score++;
-            Save();
-        }*/
+        
     }
 }

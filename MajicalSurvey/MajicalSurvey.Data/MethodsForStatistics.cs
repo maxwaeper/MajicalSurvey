@@ -48,24 +48,24 @@ namespace MajicalSurvey.Data
         }
 
 
-        public List<Users> UsersOfSurvey(string SurveyName)
-        {
-            List<Questions> l = question.GetAllQuestions(SurveyName);
-            List<Users> usersList = new List<Users>();
-            foreach (var question in l)
-            {
-                List<Answers> a = answer.GetAllAnswers(question.Id);
-                foreach (var answer in a)
-                {
-                    List<Users> u = user.GetUsersAnswers(answer.Id);
-                    foreach (var item in u)
-                    {
-                        usersList.Add(item);
-                    }
-                }
-            }
-            return usersList;
-        }
+        //public List<Users> UsersOfSurvey(string SurveyName)
+        //{
+        //    List<Questions> l = question.GetAllQuestions(SurveyName);
+        //    List<Users> usersList = new List<Users>();
+        //    foreach (var question in l)
+        //    {
+        //        List<Answers> a = answer.GetAllAnswers(question.Id);
+        //        foreach (var answer in a)
+        //        {
+        //            List<Users> u = user.GetUsersAnswers(answer.Id);
+        //            foreach (var item in u)
+        //            {
+        //                usersList.Add(item);
+        //            }
+        //        }
+        //    }
+        //    return usersList;
+        //}
 
 
         }

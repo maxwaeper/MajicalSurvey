@@ -12,10 +12,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="180*"/>
+            <RowDefinition Height="509*"/>
+            <RowDefinition Height="151*"/>
         </Grid.RowDefinitions>
-        <TextBlock Margin="84,52,62,65" FontSize="36" Text="Text" TextAlignment="Center"></TextBlock> 
+        <TextBlock x:Name="TextBlockSurvey" Grid.ColumnSpan="2" Margin="73,29,73,41" FontSize="72" Text="Text" TextAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="1" Margin="0,0,0,191" FontSize="36" TextAlignment="Center" Text="Question"/>
+        <ListBox Grid.Row="1" Margin="86,79,73,10" Grid.RowSpan="2" Grid.Column="1"/>
+
+
+
+
     </Grid>
 </Window>
