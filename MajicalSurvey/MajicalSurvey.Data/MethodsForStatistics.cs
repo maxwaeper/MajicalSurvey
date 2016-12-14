@@ -16,40 +16,19 @@ namespace MajicalSurvey.Data
         IUsersRepository user;
         IAnswerRepository answer;
         IQuestionRepository question;
+        ISurveyRepository survey;
 
         public MethodsForStatistics()
         {
             user = new UsersRepository();
             answer = new AnswerRepository();
             question = new QuestionRepository();
+            survey = new SurveyRepository();
             context = new Context();
-        }
-        //public List<Questions> QuestionsBySurvey(string SurveyName)
-        //{
-        //    ISurveyRepository sur = new SurveyRepository();
-        //    Surveys OneSurvey =  sur.GetSurveyByName(SurveyName);
-        //    IQuestionRepository ques = new QuestionRepository();
-        //    List<Questions> l = ques.GetAllQuestions(OneSurvey.Id);
-        //    return l;
-        //}
-
-
-        public List<Answers> UsersAnswers(string UsersName)
-        { 
-                Users OneUser = user.AnswersOfAUser(UsersName);
-                List<Answers> a = answer.GetAllAnswers(OneUser.Id);
-                return a;
-            
-        }
-
-
-        public int NuberOfAnswersForUser (List<Answers> ans)
-        {
-            int k = ans.Count();
-            return k;
         }
 
         public List<Answers> GetUsersAnswersById(int id)
+            //по айди юзера список его ответов
         {
             List<Answers> answers = answer.GetAnswers();
             List<Users> users = user.GetAllUsers();
@@ -67,24 +46,63 @@ namespace MajicalSurvey.Data
             return newAnswers;
         }
 
-        //public List<Users> UsersOfSurvey(string SurveyName)
-        //{
-        //    List<Questions> l = question.GetAllQuestions(SurveyName);
-        //    List<Users> usersList = new List<Users>();
-        //    foreach (var question in l)
-        //    {
-        //        List<Answers> a = answer.GetAllAnswers(question.Id);
-        //        foreach (var answer in a)
-        //        {
-        //            List<Users> u = user.GetUsersAnswers(answer.Id);
-        //            foreach (var item in u)
-        //            {
-        //                usersList.Add(item);
-        //            }
-        //        }
-        //    }
-        //    return usersList;
-        //}
+        public List<Users> GetUserssByAnswersId(int id)
+           // по айди варианта ответа список ответивших 
+        {
+            List<Answers> answers = answer.GetAnswers();
+            List<Users> users = user.GetAllUsers();
+            List<Users> newUsers = new List<Users>();
+            foreach (var item in context.Answers.Include(x => x.User))
+            {
+                if (item.Id == id)
+                {
+                    foreach (var k in item.User)
+                    {
+                        newUsers.Add(k);
+                    }
+                }
+            }
+            return newUsers;
+        }
+
+     
+        public List<Users> UsersOfSurvey(string SurveyName)
+            //по названию опросника возвращает список ответивших
+        {
+           List<Questions> l = question.GetAllQuestions(SurveyName);
+           List<Users> usersList = new List<Users>();
+          foreach (var question in l)
+           {
+              List<Answers> a = answer.GetAllAnswers(question.Id);
+                foreach (var answer in a)
+                {
+                    List<Users> u = GetUserssByAnswersId(answer.Id);
+                    foreach (var item in u)
+                    {
+                        usersList.Add(item);
+                    }
+                }
+            }
+            return usersList;
+        }
+
+
+        public List<Users> AllUsers()
+        //возвращает список всех уникальных юзеров
+        {
+            List<Surveys> surveys = survey.GetAllSurveys();
+            List<Users> allusers = new List<Users>();
+            foreach (var survey in surveys)
+            {
+                List<Users> user = UsersOfSurvey(survey.Name);
+                foreach (var u in user)
+                {
+                    allusers.Add(u);
+                }
+
+            }
+            return allusers;
+        }
 
 
     }

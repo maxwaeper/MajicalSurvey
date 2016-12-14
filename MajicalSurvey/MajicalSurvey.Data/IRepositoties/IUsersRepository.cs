@@ -12,7 +12,7 @@ namespace MajicalSurvey.Data.IRepositoties
         //List<Users> GetUsersAnswers(int answersId);
         List<Users> GetAllUsers();
 
-        Users AnswersOfAUser(string name);
+        //Users AnswersOfAUser(string name);
 
         //List<Users> GetAnswersOfUser(int id);
     }

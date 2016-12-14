@@ -10,6 +10,6 @@ namespace MajicalSurvey.Data
     {
         List<Questions> GetAllQuestions(string name);
 
-        Questions GetQuestionByName(string name);
+       // Questions GetQuestionByName(string name);
     }
 }

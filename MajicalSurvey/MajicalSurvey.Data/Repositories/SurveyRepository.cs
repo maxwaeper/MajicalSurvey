@@ -9,14 +9,15 @@ namespace MajicalSurvey.Data
     public class SurveyRepository : Repository<Surveys>, ISurveyRepository
     {
         public List<Surveys> GetAllSurveys()
+            //возвращает список всех опросников
         {
             return GetAllElements().ToList();
         }
 
-        public Surveys GetSurveyByName(string name)
-        {
-            return GetCertainElement(x => x.Name == name);
-        }
+        //public Surveys GetSurveyByName(string name)
+        //{
+        //    return GetCertainElement(x => x.Name == name);
+        //}
 
       
     }
