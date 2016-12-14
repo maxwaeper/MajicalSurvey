@@ -28,6 +28,29 @@ namespace MajicalSurvey.UI
 
         //public int k { get { return k; } set { value = 1; } }
 
+
+        public void Cler_info()
+        {
+            Question_name.Clear();
+            foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
+           // grid.RowDefinitions.Clear();
+            //foreach (Window item in grid.Children)
+            //{
+            //    (TextBox)item.
+            //}
+            //foreach (TextBox t in stackpanel_textboxes.Children)
+            //{
+            //    t.Clear();
+
+            //}
+            //for (int i = 0; i < grid.ColumnDefinitions.Count; i++)
+            //{
+
+            //}
+
+            // here should go textbox clearing and label hiding
+        }
+
         int k = 1;
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
@@ -48,10 +71,8 @@ namespace MajicalSurvey.UI
             listView.Items.Add(new Questions { Id = k, Name = Question_name.Text });
 
             k++;
-            Question_name.Clear();
-            foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
 
-            // here should go textbox clearing and label hiding
+            Cler_info();
 
         }
 
@@ -63,9 +84,10 @@ namespace MajicalSurvey.UI
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Control item in grid.Children)
+            foreach (Window item in grid.Children)
             {
                 item.Visibility = Visibility.Visible;
+               
             }
         }
 
@@ -74,6 +96,7 @@ namespace MajicalSurvey.UI
             foreach (Control item in grid.Children)
             {
                 item.Visibility = Visibility.Visible;
+
             }
         }
 

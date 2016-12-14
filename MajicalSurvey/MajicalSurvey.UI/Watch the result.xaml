@@ -7,14 +7,48 @@
         mc:Ignorable="d"
         Title="Watch the result" Height="300" Width="746" WindowState="Maximized">
     <Grid Margin="10,0,0,0">
-        <Label x:Name="label" Content="Here goes statistic" HorizontalAlignment="Left" Height="39" Margin="19,0,0,0" VerticalAlignment="Top" Width="178"/>
-        <ComboBox  Name="ComboBox" Margin="10,38,453,185" >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox  Name="ComboBox" Grid.Column="0" Grid.Row="0" Width="200" Height="50" HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center">
             <ComboBoxItem Name ="all" Content="Statistics for all surveys"></ComboBoxItem>
             <ComboBoxItem Name ="one" Content="Statistics for a particular survey"></ComboBoxItem>
-
         </ComboBox>
-        <TextBox  Name="TextBox" Visibility="Visible" Background="AliceBlue" Margin="308,38,196,185"/>
-        <Button Margin="564,38,32,185" Click="Show_button_Clicked">Show</Button>
-        <DataGrid Margin="0,102,0,0"></DataGrid>
+        <TextBox  Name="TextBox"  Background="AliceBlue" Grid.Column="1" Grid.Row="0" Width="200" Height="50" VerticalContentAlignment="Center"/>
+        <Button Grid.Column="2" Grid.Row="0" Content="Show" Width="200" Height="50" Click="Show_button_Clicked"/>
+
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" Width="250"
+              VerticalAlignment="Center" Margin="100">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Survey" Width="60" HorizontalAlignment="Center" Margin="5"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="Number of questions" Width="122" HorizontalAlignment="Center"  Margin="5"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="Number of users" Width="120" HorizontalAlignment="Center"  Margin="5"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="0" Name="survey_name" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Name="questions_number" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Name="users_number" HorizontalAlignment="Left"/>
+
+        </Grid>
+
+        <DataGrid Name="datagrid_result" Grid.ColumnSpan="2" Grid.RowSpan="2"  Width="400"  Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Window>
