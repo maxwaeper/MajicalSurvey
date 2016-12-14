@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201612140827032_Usersmig.Designer.cs">
       <DependentUpon>201612140827032_Usersmig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612141207051_NewEntitiesConnection.cs" />
+    <Compile Include="Migrations\201612141207051_NewEntitiesConnection.Designer.cs">
+      <DependentUpon>201612141207051_NewEntitiesConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Entities\Answers.cs" />
     <Compile Include="Context.cs" />
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612140827032_Usersmig.resx">
       <DependentUpon>201612140827032_Usersmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612141207051_NewEntitiesConnection.resx">
+      <DependentUpon>201612141207051_NewEntitiesConnection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

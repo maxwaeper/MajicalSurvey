@@ -15,7 +15,7 @@ namespace MajicalSurvey.Data
         public int Id { get; set; }
         public string Name { get; set; }
         //public int Score { get; set; }
-        //public Users Users { get; set; }
+        public List<Users> User { get; set; }
         public Questions Question { get; set; }
 
     }

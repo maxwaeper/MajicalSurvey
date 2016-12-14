@@ -10,6 +10,6 @@ namespace MajicalSurvey.Data.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Answers Answer { get; set; }
+        public List<Answers> Answers { get; set; }
     }
 }
