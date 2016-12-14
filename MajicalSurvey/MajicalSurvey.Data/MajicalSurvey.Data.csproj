@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201612141207051_NewEntitiesConnection.Designer.cs">
       <DependentUpon>201612141207051_NewEntitiesConnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612141309549_NewEntitiesConnection1.cs" />
+    <Compile Include="Migrations\201612141309549_NewEntitiesConnection1.Designer.cs">
+      <DependentUpon>201612141309549_NewEntitiesConnection1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612141313279_NewEntitiesConnection2.cs" />
+    <Compile Include="Migrations\201612141313279_NewEntitiesConnection2.Designer.cs">
+      <DependentUpon>201612141313279_NewEntitiesConnection2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Entities\Answers.cs" />
     <Compile Include="Context.cs" />
@@ -114,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612141207051_NewEntitiesConnection.resx">
       <DependentUpon>201612141207051_NewEntitiesConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612141309549_NewEntitiesConnection1.resx">
+      <DependentUpon>201612141309549_NewEntitiesConnection1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612141313279_NewEntitiesConnection2.resx">
+      <DependentUpon>201612141313279_NewEntitiesConnection2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
