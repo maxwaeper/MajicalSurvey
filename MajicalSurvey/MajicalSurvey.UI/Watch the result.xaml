@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Watch the result" Height="300" Width="746" WindowState="Maximized">
+        Title="Watch the result" Height="300" Width="746" WindowState="Maximized" FontSize="17">
     <Grid Margin="10,0,0,0">
 
         <Grid.ColumnDefinitions>

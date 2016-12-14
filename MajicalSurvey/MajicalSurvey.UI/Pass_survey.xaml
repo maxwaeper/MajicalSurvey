@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Pass a survey" Height="871.25" Width="1356.818" WindowState="Maximized">
+        Title="Pass a survey" Height="871.25" Width="1356.818" WindowState="Maximized" FontSize="17">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
