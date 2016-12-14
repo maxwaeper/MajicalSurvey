@@ -23,5 +23,11 @@ namespace MajicalSurvey.UI
         {
             InitializeComponent();
         }
+
+        private void ButtonProceed_Click(object sender, RoutedEventArgs e)
+        {
+            Pass_survey next = new Pass_survey();
+            next.ShowDialog();
+        }
     }
 }
