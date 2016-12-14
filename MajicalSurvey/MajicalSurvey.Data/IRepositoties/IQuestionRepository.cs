@@ -8,7 +8,7 @@ namespace MajicalSurvey.Data
 {
     public interface IQuestionRepository
     {
-        List<Questions> GetAllQuestions(int surveyId);
+        List<Questions> GetAllQuestions(string name);
 
         Questions GetQuestionByName(string name);
     }

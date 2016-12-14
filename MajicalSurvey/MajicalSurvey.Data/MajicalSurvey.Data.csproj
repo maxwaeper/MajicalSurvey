@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Users.cs" />
-    <Compile Include="IRepositoties\IUsers.cs" />
+    <Compile Include="IRepositoties\IUsersRepository.cs" />
     <Compile Include="MethodsForStatistics.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.Designer.cs">
