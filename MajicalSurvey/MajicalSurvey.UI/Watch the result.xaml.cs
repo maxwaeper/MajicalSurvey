@@ -26,7 +26,15 @@ namespace MajicalSurvey.UI
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
-           // if (ComboBox.A)
+            survey_name.Text = "hi";
+            questions_number.Text = "Marina";
+            users_number.Text = "Take it easy";
+
+           // if (ComboBox.SelectedItem == all) //do methods for all
+
+            //if (ComboBox.SelectedItem == one) //do methods for one
+
+          
         }
     }
 }
