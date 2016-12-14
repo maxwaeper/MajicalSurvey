@@ -22,8 +22,11 @@ namespace MajicalSurvey.UI
         public Watch_the_result()
         {
             InitializeComponent();
-            Name.Visibility = Visibility.Hidden;
         }
 
+        private void Show_button_Clicked(object sender, RoutedEventArgs e)
+        {
+           // if (ComboBox.A)
+        }
     }
 }

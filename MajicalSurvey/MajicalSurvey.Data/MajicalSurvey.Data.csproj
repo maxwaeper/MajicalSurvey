@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201612111645083_AddUseransw.Designer.cs">
       <DependentUpon>201612111645083_AddUseransw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612140827032_Usersmig.cs" />
+    <Compile Include="Migrations\201612140827032_Usersmig.Designer.cs">
+      <DependentUpon>201612140827032_Usersmig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Entities\Answers.cs" />
     <Compile Include="Context.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612111645083_AddUseransw.resx">
       <DependentUpon>201612111645083_AddUseransw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612140827032_Usersmig.resx">
+      <DependentUpon>201612140827032_Usersmig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
