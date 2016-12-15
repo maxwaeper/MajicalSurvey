@@ -1,4 +1,6 @@
 ﻿using MajicalSurvey.Data;
+using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,7 @@ namespace MajicalSurvey.UI
         }
         ISurveyRepository surveyRepo = new SurveyRepository();
         IQuestionRepository questionRepo = new QuestionRepository();
+        IUsersRepository usersRepo = new UsersRepository();
         MethodsForStatistics methods = new MethodsForStatistics();
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
@@ -41,11 +44,11 @@ namespace MajicalSurvey.UI
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
-                second_n.Text = methods.AllUsers().Count().ToString();
+                second_n.Text = usersRepo.GetAllUsers().Count().ToString();
 
                 try
                 {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / methods.AllUsers().Count()).ToString();
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
                 }
                 catch (DivideByZeroException)
                 {
