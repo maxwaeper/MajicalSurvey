@@ -20,16 +20,18 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class Watch_the_result : Window
     {
+        ISurveyRepository surveyRepo;
+        IQuestionRepository questionRepo;
         public Watch_the_result()
         {
             InitializeComponent();
+            surveyRepo = new SurveyRepository();
+            questionRepo = new QuestionRepository();
         }
-        ISurveyRepository surveyRepo = new SurveyRepository();
-        IQuestionRepository questionRepo = new QuestionRepository();
-        MethodsForStatistics methods = new MethodsForStatistics();
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
+            MethodsForStatistics methods = new MethodsForStatistics();
             OverallData.Visibility = Visibility.Visible;
 
             if (ComboBox.SelectedItem == all)

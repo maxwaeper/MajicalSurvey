@@ -33,8 +33,8 @@ namespace MajicalSurvey.UI
 
         private void create_survey_Clicked(object sender, RoutedEventArgs e)
         {
-            Create_survey create = new Create_survey();
-            create.ShowDialog();
+            EnterSurveyName surveyName = new EnterSurveyName();
+            surveyName.ShowDialog();
         }
 
         private void pass_survey_Clicked(object sender, RoutedEventArgs e)
