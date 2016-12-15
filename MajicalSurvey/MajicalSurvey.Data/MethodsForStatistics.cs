@@ -65,6 +65,22 @@ namespace MajicalSurvey.Data
             return newUsers;
         }
 
+        public List<Users> ListForProportion(int questionID)
+            //по айди вопроса возвращает список ответивших
+        {
+            List<Users> usersList = new List<Users>();
+            List<Answers> a = answer.GetAllAnswers(questionID);
+            foreach (var answer in a)
+                {
+                    List<Users> u = GetUserssByAnswersId(answer.Id);
+                    foreach (var item in u)
+                    {
+                        usersList.Add(item);
+                    }
+              
+               }
+            return usersList;
+        }
      
         public List<Users> UsersOfSurvey(string SurveyName)
             //по названию опросника возвращает список ответивших

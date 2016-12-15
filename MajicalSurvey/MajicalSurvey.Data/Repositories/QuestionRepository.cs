@@ -14,10 +14,11 @@ namespace MajicalSurvey.Data
             return GetAllElements().Where(x=>x.Survey.Name==name).ToList();
         }
 
-        //public Questions GetQuestionByName(string name)
-        //{
-        //    return GetCertainElement(x => x.Name == name);
-        //}
+        public int GetQuestionByName(string name)
+            //по вопросу возвращает его айди
+        {
+            return GetCertainElement(x => x.Name == name).Id;
+        }
 
         
     }
