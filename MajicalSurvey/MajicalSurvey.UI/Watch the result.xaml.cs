@@ -30,14 +30,34 @@ namespace MajicalSurvey.UI
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
+            OverallData.Visibility = Visibility.Visible;
 
             if (ComboBox.SelectedItem == all)
             //do methods for all
             {
-                OverallData.Text = "Tne namber of surveys: " + surveyRepo.GetAllSurveys().Count().ToString()+"\r\n"+
-                    "The number of surveys for a user: "+ methods.AllUsers().Count().ToString() + "\r\n" +
-                    "The avarege number of surveys for a user: " + 
-                    (surveyRepo.GetAllSurveys().Count()/ methods.AllUsers().Count()).ToString();
+                data_all.Visibility = Visibility.Visible;
+                first.Text = "The number of surveys:";
+                second.Text = "The number of surveys for a user:";
+                third.Text = "The avarege number of surveys for a user:";
+
+                first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
+                second_n.Text = methods.AllUsers().Count().ToString();
+
+                try
+                {
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / methods.AllUsers().Count()).ToString();
+                }
+                catch (DivideByZeroException)
+                {
+
+                    third_n.Text = "0";
+                }
+               
+                //OverallData.Text = "Tne namber of surveys: " + surveyRepo.GetAllSurveys().Count().ToString()+"\r\n"+
+                //    "The number of surveys for a user: "+ methods.AllUsers().Count().ToString() + "\r\n" +
+                //    "The avarege number of surveys for a user: " + 
+                //    (surveyRepo.GetAllSurveys().Count()/ methods.AllUsers().Count()).ToString();
+
                 //+подробнее в табличке в DataGrid в виде: Survey_Name ---- Users namber
                 //сортировка по популярности
             }
@@ -46,16 +66,42 @@ namespace MajicalSurvey.UI
             //do methods for one
             {
                 //здесь должна быть проверка на то, что введеное название опросника существует 
-                OverallData.Text = "Survey's name: " + TextBoxForSurveyName.Text + "\r\n" +
-                    "The number of its questions: " + questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString() +
-                    "\r\n"+"The number of people who have answered the survey: " + 
-                    methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+
+                // проверка работает, бд пустая
+                //int k = 0;
+
+                //foreach (Surveys s in surveyRepo.GetAllSurveys())
+                //{
+                //    if (s.Name == TextBoxForSurveyName.Text) k++;
+                //}
+
+                //if (k != 1)
+                //{
+                //    MessageBox.Show("There are no survey with such name", "Something is missed");
+                //    return;
+                //}
+
+                data_one.Visibility = Visibility.Visible;
+
+                first.Text = "Survey's name:";
+                second.Text = "The number of its questions:";
+                third.Text = "The number of people who have answered the survey:";
+
+
+                first_n.Text = TextBoxForSurveyName.Text;
+                second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
+                third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+
+                //OverallData.Text = "Survey's name: " + TextBoxForSurveyName.Text + "\r\n" +
+                //    "The number of its questions: " + questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString() +
+                //    "\r\n"+"The number of people who have answered the survey: " + 
+                //    methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
                 //---доля в отношении ко всем вариантам ответа ---%
                 //(?) самые популярные варианты ответов среди пользователей
-            }
 
-          
+            }
         }
     }
 }
