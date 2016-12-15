@@ -18,11 +18,11 @@
         </Grid.RowDefinitions>
 
         <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="350" Margin="85" Grid.RowSpan="4" SelectionChanged="Item_Selection">
+                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4" SelectionChanged="Item_Selection">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="25"/>
-                    <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="300"/>
+                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="50"/>
+                    <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="430"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -46,7 +46,7 @@
 
             <Label Grid.Column="0" Grid.Row="1" Content="Put a name of the question"
                Height="30" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Name="Question_name" Height="60" Width="200" 
+            <TextBox Grid.Column="1" Grid.Row="1" Name="Question_name" Height="60" Width="300" 
                      VerticalAlignment="Center" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" 
                      AcceptsReturn="True"/>
         </Grid>
@@ -54,8 +54,8 @@
         <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
             <RadioButton Content="Radiobuttons" Name="Radiobuttons" Margin="5" Checked="Radiobuttons_Checked"/>
             <RadioButton Content="Cheakboxes" Name="Cheakboxes" Margin="5" Checked="Cheakboxes_Checked"/>
-            <RadioButton Content="String" Name="String" Margin="5"/>
-            <RadioButton Content="Number" Name="Number" Margin="5"/>
+            <RadioButton Content="String" Name="String" Margin="5" Checked="String_Checked"/>
+            <RadioButton Content="Number" Name="Number" Margin="5" Checked="Number_Checked"/>
         </StackPanel>
 
         
@@ -106,11 +106,11 @@
             </Grid>
       
 
-        <Button Grid.Column="0" Grid.Row="2" Content="Add" Width="50" Height="50" Click="Add_Clicked"
+        <Button Grid.Column="0" Grid.Row="2" Content="Add" Width="70" Height="50" Click="Add_Clicked"
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="40" />
         <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Width="50" Height="50" Click="Delete_Clicked"  Margin="40"/>
-        <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="50" Height="50" HorizontalAlignment="Left" 
+                Width="70" Height="50" Click="Delete_Clicked"  Margin="40"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 
               VerticalAlignment="Bottom"  Margin="40"/>
 
     </Grid>

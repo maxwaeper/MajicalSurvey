@@ -111,5 +111,15 @@ namespace MajicalSurvey.UI
             // Question_name.Text = { Binding Path = (Question)Name};
             Question_name.Text = "hi";
         }
+
+        private void String_Checked(object sender, RoutedEventArgs e)
+        {
+            grid.Visibility = Visibility.Hidden;
+        }
+
+        private void Number_Checked(object sender, RoutedEventArgs e)
+        {
+            grid.Visibility = Visibility.Hidden;
+        }
     }
 }
