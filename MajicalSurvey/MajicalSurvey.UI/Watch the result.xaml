@@ -39,10 +39,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Name="first" Grid.Column="0" Grid.Row="0" Width="300" Text = "Survey's name" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-            <TextBlock Name="second" Grid.Column="0" Grid.Row="1" Width="300" Text="The number of people who have answered the survey" TextWrapping="Wrap" 
+            <TextBlock Name="first" Grid.Column="0" Grid.Row="0" Width="300"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Name="second" Grid.Column="0" Grid.Row="1" Width="300" TextWrapping="Wrap" 
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" Text = "The number of surveys for a user" VerticalAlignment="Center"
+            <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" VerticalAlignment="Center"
                        HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
             <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="50" VerticalAlignment="Center" />
