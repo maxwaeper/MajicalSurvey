@@ -33,6 +33,7 @@ namespace MajicalSurvey.UI
         {
             MethodsForStatistics methods = new MethodsForStatistics();
             OverallData.Visibility = Visibility.Visible;
+            var surveysList = surveyRepo.GetAllSurveys();
 
             if (ComboBox.SelectedItem == all)
             //do methods for all
@@ -53,6 +54,10 @@ namespace MajicalSurvey.UI
                 {
 
                     third_n.Text = "0";
+                }
+                foreach (var item in surveysList)
+                {
+                    data_all.ItemsSource = item.Id + item.Name + methods.UsersOfSurvey(item.Name);
                 }
                
                 //OverallData.Text = "Tne namber of surveys: " + surveyRepo.GetAllSurveys().Count().ToString()+"\r\n"+

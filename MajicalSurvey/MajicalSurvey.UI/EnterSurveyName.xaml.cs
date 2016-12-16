@@ -20,6 +20,7 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class EnterSurveyName : Window
     {
+        public string SurveyName { get; set; }
         IRepository<Surveys> survey;
         public EnterSurveyName()
         {
@@ -29,6 +30,7 @@ namespace MajicalSurvey.UI
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            SurveyName = TextBoxSurveyName.Text;
             survey.Insert(new Surveys { Name = TextBoxSurveyName.Text });
             Create_survey create = new Create_survey();
             create.ShowDialog();
