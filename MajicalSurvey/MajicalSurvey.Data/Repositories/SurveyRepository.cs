@@ -14,10 +14,10 @@ namespace MajicalSurvey.Data
             return GetAllElements().ToList();
         }
 
-        //public Surveys GetSurveyByName(string name)
-        //{
-        //    return GetCertainElement(x => x.Name == name);
-        //}
+        public Surveys GetSurveyByName(string name)
+        {
+            return GetCertainElement(x => x.Name == name);
+        }
 
       
     }

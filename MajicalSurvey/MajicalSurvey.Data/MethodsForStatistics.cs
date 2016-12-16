@@ -30,8 +30,6 @@ namespace MajicalSurvey.Data
         public List<Answers> GetUsersAnswersById(int id)
             //по айди юзера список его ответов
         {
-            List<Answers> answers = answer.GetAnswers();
-            List<Users> users = user.GetAllUsers();
             List<Answers> newAnswers = new List<Answers>();
             foreach (var item in context.Users.Include(x=>x.Answers))
             {
@@ -49,8 +47,6 @@ namespace MajicalSurvey.Data
         public List<Users> GetUserssByAnswersId(int id)
            // по айди варианта ответа список ответивших 
         {
-            List<Answers> answers = answer.GetAnswers();
-            List<Users> users = user.GetAllUsers();
             List<Users> newUsers = new List<Users>();
             foreach (var item in context.Answers.Include(x => x.User))
             {
@@ -64,6 +60,7 @@ namespace MajicalSurvey.Data
             }
             return newUsers;
         }
+
 
         public List<Users> ListForProportion(int questionID)
             //по айди вопроса возвращает список ответивших
@@ -82,10 +79,11 @@ namespace MajicalSurvey.Data
             return usersList;
         }
      
+
         public List<Users> UsersOfSurvey(string SurveyName)
             //по названию опросника возвращает список ответивших
         {
-           List<Questions> l = question.GetAllQuestions();
+           List<Questions> l = question.GetAllQuestions(SurveyName);
            List<Users> usersList = new List<Users>();
           foreach (var question in l)
            {
@@ -101,5 +99,6 @@ namespace MajicalSurvey.Data
             }
             return usersList;
         }
+
     }
 }
