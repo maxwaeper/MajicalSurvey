@@ -21,9 +21,11 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class Create_survey : Window
     {
+        IQuestionRepository questionRepo;
         public Create_survey()
         {
             InitializeComponent();
+            questionRepo = new QuestionRepository();
         }
 
         //public int k { get { return k; } set { value = 1; } }
@@ -56,6 +58,8 @@ namespace MajicalSurvey.UI
         int k = 1;
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
+            EnterSurveyName survey = new EnterSurveyName();
+
             string error = "Something is missed";
 
             if (string.IsNullOrWhiteSpace(Survey_name.Text))
@@ -82,6 +86,8 @@ namespace MajicalSurvey.UI
 
             Clear_info();
             if (k != 1) survey_textblock.Text = "You can rename your survey";
+
+            listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
 
         }
 

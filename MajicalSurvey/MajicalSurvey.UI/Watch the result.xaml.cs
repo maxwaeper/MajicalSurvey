@@ -1,6 +1,4 @@
 ﻿using MajicalSurvey.Data;
-using MajicalSurvey.Data.IRepositoties;
-using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,18 +20,20 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class Watch_the_result : Window
     {
+        ISurveyRepository surveyRepo;
+        IQuestionRepository questionRepo;
         public Watch_the_result()
         {
             InitializeComponent();
+            surveyRepo = new SurveyRepository();
+            questionRepo = new QuestionRepository();
         }
-        ISurveyRepository surveyRepo = new SurveyRepository();
-        IQuestionRepository questionRepo = new QuestionRepository();
-        IUsersRepository usersRepo = new UsersRepository();
-        MethodsForStatistics methods = new MethodsForStatistics();
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
+            MethodsForStatistics methods = new MethodsForStatistics();
             OverallData.Visibility = Visibility.Visible;
+            var surveysList = surveyRepo.GetAllSurveys();
 
             if (ComboBox.SelectedItem == all)
             //do methods for all
@@ -44,16 +44,20 @@ namespace MajicalSurvey.UI
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
-                second_n.Text = usersRepo.GetAllUsers().Count().ToString();
+                second_n.Text = methods.AllUsers().Count().ToString();
 
                 try
                 {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / methods.AllUsers().Count()).ToString();
                 }
                 catch (DivideByZeroException)
                 {
 
                     third_n.Text = "0";
+                }
+                foreach (var item in surveysList)
+                {
+                    data_all.ItemsSource = item.Id + item.Name + methods.UsersOfSurvey(item.Name);
                 }
                
                 //OverallData.Text = "Tne namber of surveys: " + surveyRepo.GetAllSurveys().Count().ToString()+"\r\n"+

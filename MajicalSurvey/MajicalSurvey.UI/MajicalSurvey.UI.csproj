@@ -70,6 +70,9 @@
     <Compile Include="Create_survey.xaml.cs">
       <DependentUpon>Create_survey.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EnterSurveyName.xaml.cs">
+      <DependentUpon>EnterSurveyName.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pass_survey.xaml.cs">
       <DependentUpon>Pass_survey.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Create_survey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterSurveyName.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
