@@ -17,10 +17,10 @@ namespace MajicalSurvey.Data
             _context = new Context();
         }
 
-        public List<Questions> GetAllQuestions()
+        public List<Questions> GetAllQuestions(string name)
             //по названию опросника возвращает список вопросов
         {
-            return _context.Questions.Include(x => x.Survey).ToList();
+            return _context.Questions.Include(x => x.Survey).Where(y=>y.Survey.Name==name).ToList();
         }
 
         public int GetQuestionByName(string name)
