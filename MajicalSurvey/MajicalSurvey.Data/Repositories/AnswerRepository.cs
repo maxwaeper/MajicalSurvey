@@ -4,15 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace MajicalSurvey.Data
 {
     public class AnswerRepository : Repository<Answers>, IAnswerRepository
     {
+        private Context _context;
+
+        public AnswerRepository()
+        {
+            _context = new Context();
+        }
+
         public List<Answers> GetAllAnswers(int questionId)
             //по номеру вопроса возвращает список вариантов ответов
         {
-            return GetAllElements().Where(x => x.Question.Id == questionId).ToList();
+            return _context.Answers.Include(x => x.Question).ToList();
         }
 
       public List<Answers> GetAnswers()

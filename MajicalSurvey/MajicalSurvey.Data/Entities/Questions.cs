@@ -9,7 +9,7 @@ namespace MajicalSurvey.Data
 {
     public class Questions
     {
-        [Key]
+        
         public int Id { get; set; }
         public string Name { get; set; }
 
