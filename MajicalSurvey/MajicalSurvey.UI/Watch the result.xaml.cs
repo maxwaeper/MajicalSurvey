@@ -1,4 +1,6 @@
 ﻿using MajicalSurvey.Data;
+using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +24,13 @@ namespace MajicalSurvey.UI
     {
         ISurveyRepository surveyRepo;
         IQuestionRepository questionRepo;
+        IUsersRepository usersRepo;
         public Watch_the_result()
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
             questionRepo = new QuestionRepository();
+            usersRepo = new UsersRepository();
         }
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
@@ -44,11 +48,11 @@ namespace MajicalSurvey.UI
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
-                second_n.Text = methods.AllUsers().Count().ToString();
+                second_n.Text = usersRepo.GetAllUsers().Count().ToString();
 
                 try
                 {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / methods.AllUsers().Count()).ToString();
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
                 }
                 catch (DivideByZeroException)
                 {
@@ -75,18 +79,18 @@ namespace MajicalSurvey.UI
                 //здесь должна быть проверка на то, что введеное название опросника существует 
 
                 // проверка работает, бд пустая
-                //int k = 0;
+                int k = 0;
 
-                //foreach (Surveys s in surveyRepo.GetAllSurveys())
-                //{
-                //    if (s.Name == TextBoxForSurveyName.Text) k++;
-                //}
+                foreach (Surveys s in surveyRepo.GetAllSurveys())
+                {
+                    if (s.Name == TextBoxForSurveyName.Text) k++;
+                }
 
-                //if (k != 1)
-                //{
-                //    MessageBox.Show("There are no survey with such name", "Something is missed");
-                //    return;
-                //}
+                if (k != 1)
+                {
+                    MessageBox.Show("There are no survey with such name", "Something is missed");
+                    return;
+                }
 
                 data_one.Visibility = Visibility.Visible;
 
@@ -99,10 +103,7 @@ namespace MajicalSurvey.UI
                 second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
                 third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
 
-                //OverallData.Text = "Survey's name: " + TextBoxForSurveyName.Text + "\r\n" +
-                //    "The number of its questions: " + questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString() +
-                //    "\r\n"+"The number of people who have answered the survey: " + 
-                //    methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+              
 
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
                 //---доля в отношении ко всем вариантам ответа ---%

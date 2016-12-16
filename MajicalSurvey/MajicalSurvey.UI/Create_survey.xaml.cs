@@ -30,7 +30,9 @@ namespace MajicalSurvey.UI
 
         //public int k { get { return k; } set { value = 1; } }
 
-
+        List<Questions> list_quest = new List<Questions>();
+        List<Answers> list_answers = new List<Answers>();
+ 
         public void Clear_info()
         {
             Question_name.Clear();
@@ -80,14 +82,37 @@ namespace MajicalSurvey.UI
                 return;
             }
 
-            listView.Items.Add(new Questions { Id = k, Name = Question_name.Text });
+            Surveys s = new Surveys();
+            Questions q = new Questions();
+            Answers a = new Answers();
+
+
+            
+
+            q.Id = k;
+            q.Name = Question_name.Text;
+            q.Survey = s;
+            list_quest.Add(q);
+
+
+          //  listView.Items.Add(new Questions { Id = k, Name = Question_name.Text });
+            listView.Items.Add(q); 
+
+            /////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            foreach (Control c in stackpanel_textboxes.Children)
+            {
+                int m = 1;
+                if (!string.IsNullOrWhiteSpace(c.ToString()))
+                    list_answers.Add(new Answers { Id = 1, RadioButtonName = c.ToString(), Question = k }); 
+            }
 
             k++;
 
             Clear_info();
             if (k != 1) survey_textblock.Text = "You can rename your survey";
 
-            listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
+           // listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
 
         }
 
