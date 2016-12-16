@@ -87,7 +87,7 @@ namespace MajicalSurvey.UI
             Clear_info();
             if (k != 1) survey_textblock.Text = "You can rename your survey";
 
-            listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
+            //listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
 
         }
 

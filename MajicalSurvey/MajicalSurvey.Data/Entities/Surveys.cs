@@ -9,8 +9,10 @@ namespace MajicalSurvey.Data
 {
     public class Surveys
     {
-        [Key]
+        
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public List<Questions> Questions { get; set; }
     }
 }

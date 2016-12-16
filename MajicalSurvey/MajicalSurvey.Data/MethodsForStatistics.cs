@@ -85,7 +85,7 @@ namespace MajicalSurvey.Data
         public List<Users> UsersOfSurvey(string SurveyName)
             //по названию опросника возвращает список ответивших
         {
-           List<Questions> l = question.GetAllQuestions(SurveyName);
+           List<Questions> l = question.GetAllQuestions();
            List<Users> usersList = new List<Users>();
           foreach (var question in l)
            {
@@ -101,25 +101,5 @@ namespace MajicalSurvey.Data
             }
             return usersList;
         }
-
-
-        public List<Users> AllUsers()
-        //возвращает список всех уникальных юзеров
-        {
-            List<Surveys> surveys = survey.GetAllSurveys();
-            List<Users> allusers = new List<Users>();
-            foreach (var survey in surveys)
-            {
-                List<Users> user = UsersOfSurvey(survey.Name);
-                foreach (var u in user)
-                {
-                    allusers.Add(u);
-                }
-
-            }
-            return allusers;
-        }
-
-
     }
 }

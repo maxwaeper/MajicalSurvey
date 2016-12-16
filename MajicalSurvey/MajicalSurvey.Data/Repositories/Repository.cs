@@ -20,7 +20,7 @@ namespace MajicalSurvey.Data
 
         public virtual IEnumerable<T> GetAllElements()
         { 
-            return _context.Set<T>();
+            return _context.Set<T>().ToList();
         }
 
         public virtual T GetCertainElement(Expression<Func<T, bool>> predicate)

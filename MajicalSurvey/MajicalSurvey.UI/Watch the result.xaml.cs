@@ -1,4 +1,6 @@
 ﻿using MajicalSurvey.Data;
+using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +24,13 @@ namespace MajicalSurvey.UI
     {
         ISurveyRepository surveyRepo;
         IQuestionRepository questionRepo;
+        IUsersRepository userRepo;
         public Watch_the_result()
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
             questionRepo = new QuestionRepository();
+            userRepo = new UsersRepository();
         }
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
@@ -44,11 +48,11 @@ namespace MajicalSurvey.UI
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
-                second_n.Text = methods.AllUsers().Count().ToString();
+                second_n.Text = userRepo.GetAllUsers().Count().ToString();
 
                 try
                 {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / methods.AllUsers().Count()).ToString();
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / userRepo.GetAllUsers().Count()).ToString();
                 }
                 catch (DivideByZeroException)
                 {
@@ -96,7 +100,7 @@ namespace MajicalSurvey.UI
 
 
                 first_n.Text = TextBoxForSurveyName.Text;
-                second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
+                //second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
                 third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
 
                 //OverallData.Text = "Survey's name: " + TextBoxForSurveyName.Text + "\r\n" +
