@@ -83,7 +83,7 @@ namespace MajicalSurvey.Data
         public List<Users> UsersOfSurvey(string SurveyName)
             //по названию опросника возвращает список ответивших
         {
-           List<Questions> l = question.GetAllQuestions(SurveyName);
+          List<Questions> l = question.GetAllQuestions(SurveyName);
            List<Users> usersList = new List<Users>();
           foreach (var question in l)
            {

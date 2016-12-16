@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" FontSize="17" WindowState="Maximized">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Back.jpg"/>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

@@ -22,6 +22,7 @@ namespace MajicalSurvey.UI
     {
         public string SurveyName { get; set; }
         IRepository<Surveys> survey;
+
         public EnterSurveyName()
         {
             InitializeComponent();

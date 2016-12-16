@@ -111,7 +111,7 @@
         <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Width="70" Height="50" Click="Delete_Clicked"  Margin="40"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 
-              VerticalAlignment="Bottom"  Margin="40"/>
+              VerticalAlignment="Bottom"  Margin="40" Click="Finish_Clicked"/>
 
     </Grid>
 </Window>

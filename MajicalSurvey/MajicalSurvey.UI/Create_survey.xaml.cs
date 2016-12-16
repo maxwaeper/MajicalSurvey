@@ -21,43 +21,40 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class Create_survey : Window
     {
-        IQuestionRepository questionRepo;
         public Create_survey()
         {
             InitializeComponent();
-            questionRepo = new QuestionRepository();
         }
 
         //public int k { get { return k; } set { value = 1; } }
 
         List<Questions> list_quest = new List<Questions>();
         List<Answers> list_answers = new List<Answers>();
- 
+
+        Surveys s = new Surveys();
+        Questions q = new Questions();
+        Answers a = new Answers();
+
+        ISurveyRepository _survey = new SurveyRepository();
+        IRepository<Surveys> ss = new SurveyRepository();
+        IQuestionRepository _question = new QuestionRepository();
+        IAnswerRepository _answer = new AnswerRepository();
+
+
         public void Clear_info()
         {
             Question_name.Clear();
             foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
 
-            // grid.RowDefinitions.Clear();
-            //foreach (Window item in grid.Children)
-            //{
-            //    (TextBox)item.
-            //}
-            foreach (TextBox t in stackpanel_textboxes.Children)
-            {
-                t.Clear();
-
-            }
+            foreach (TextBox t in stackpanel_textboxes.Children) t.Clear();
+         
             grid.Visibility = Visibility.Hidden;
-            //for (int i = 0; i < grid.ColumnDefinitions.Count; i++)
-            //{
-
-            //}
-
-            // here should go textbox clearing and label hiding
+            
         }
 
         int k = 1;
+        int m = 1;
+
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
             EnterSurveyName survey = new EnterSurveyName();
@@ -80,14 +77,7 @@ namespace MajicalSurvey.UI
             {
                 MessageBox.Show("You haven't chosen an answer variant", error);
                 return;
-            }
-
-            Surveys s = new Surveys();
-            Questions q = new Questions();
-            Answers a = new Answers();
-
-
-            
+            }          
 
             q.Id = k;
             q.Name = Question_name.Text;
@@ -95,16 +85,22 @@ namespace MajicalSurvey.UI
             list_quest.Add(q);
 
 
-          //  listView.Items.Add(new Questions { Id = k, Name = Question_name.Text });
             listView.Items.Add(q); 
 
             /////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             foreach (Control c in stackpanel_textboxes.Children)
             {
-                int m = 1;
                 if (!string.IsNullOrWhiteSpace(c.ToString()))
-                    list_answers.Add(new Answers { Id = 1, RadioButtonName = c.ToString(), Question = k }); 
+                {
+                    a.RadioButtonName = c.ToString();
+                    a.Question = q;
+                    a.Id = m;
+
+                    list_answers.Add(a);
+                    m++;
+                }
+                        
             }
 
             k++;
@@ -151,6 +147,11 @@ namespace MajicalSurvey.UI
         private void Number_Checked(object sender, RoutedEventArgs e)
         {
             grid.Visibility = Visibility.Hidden;
+        }
+
+        private void Finish_Clicked(object sender, RoutedEventArgs e)
+        {
+           ss.
         }
     }
 }
