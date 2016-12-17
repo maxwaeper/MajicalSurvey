@@ -1,5 +1,5 @@
 ﻿using MajicalSurvey.Data.Entities;
-using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

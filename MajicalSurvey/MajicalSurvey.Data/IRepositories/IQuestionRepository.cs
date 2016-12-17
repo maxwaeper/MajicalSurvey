@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MajicalSurvey.Data
 {
-    public interface IQuestionRepository
+    public interface IQuestionRepository : IRepository<Questions>
     {
         List<Questions> GetAllQuestions(string name);
 
