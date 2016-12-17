@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
         Title="Create new survey" Height="800" Width="900" WindowState="Maximized" FontSize="17" FontFamily="Aria">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Pictures/tree.jpg"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4" SelectionChanged="Item_Selection">
+                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="50"/>
@@ -39,7 +43,7 @@
 
 
             <TextBlock Grid.Column="0" Grid.Row="0" Name="survey_textblock" Text="Name your survey" Height="30" Width="200" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontSize="19"/>
+                       VerticalAlignment="Center" FontSize="19" TextWrapping="Wrap"/>
             <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Name="Survey_name" 
                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="200" 
                      VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" FontStyle="Italic"/>
@@ -53,9 +57,9 @@
         
         <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
             <RadioButton Content="Radiobuttons" Name="Radiobuttons" Margin="5" Checked="Radiobuttons_Checked"/>
-            <RadioButton Content="Cheakboxes" Name="Cheakboxes" Margin="5" Checked="Cheakboxes_Checked"/>
-            <RadioButton Content="String" Name="String" Margin="5" Checked="String_Checked"/>
-            <RadioButton Content="Number" Name="Number" Margin="5" Checked="Number_Checked"/>
+            <RadioButton Content="Cheakboxes" Name="Cheakboxes" Margin="5" Checked="Current_version_exeption"/>
+            <RadioButton Content="String" Name="String" Margin="5" Checked="Current_version_exeption"/>
+            <RadioButton Content="Number" Name="Number" Margin="5" Checked="Current_version_exeption"/>
         </StackPanel>
 
         
@@ -64,11 +68,11 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="10*" Name="with_textboxes"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
+                <Grid.RowDefinitions >
+                    <RowDefinition />
+                    <RowDefinition />
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -78,30 +82,30 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-           
-                <StackPanel Name="stackpanel_textboxes"  Grid.Column="1" Grid.RowSpan="10">
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="8" Margin="3"/>
-                    <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="9" Margin="3"/>
+
+            <StackPanel Name="stackpanel_textboxes"  Grid.Column="1" Grid.RowSpan="10">
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="6" />
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="6" />
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="6"/>
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Margin="6"/>
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Margin="6" />
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Margin="6"/>
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Margin="6" />
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Margin="6"/>
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="8" Margin="6"/>
+                <TextBox Width="300" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="9" Margin="6"/>
             </StackPanel >
-                
-                <Label Content="1" Grid.Column="0" Grid.Row="0" Margin="3"/>
-                <Label Content="2" Grid.Column="0" Grid.Row="1" Margin="3"/>
-                <Label Content="3" Grid.Column="0" Grid.Row="2" Margin="3"/>
-                <Label Content="4" Grid.Column="0" Grid.Row="3" Margin="3"/>
-                <Label Content="5" Grid.Column="0" Grid.Row="4" Margin="3"/>
-                <Label Content="6" Grid.Column="0" Grid.Row="5" Margin="3"/>
-                <Label Content="7" Grid.Column="0" Grid.Row="6" Margin="3"/>
-                <Label Content="8" Grid.Column="0" Grid.Row="7" Margin="3"/>
-                <Label Content="9" Grid.Column="0" Grid.Row="8" Margin="3"/>
-                <Label Content="10" Grid.Column="0" Grid.Row="9" Margin="3"/>
+
+            <Label Content="1"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="3" />
+            <Label Content="2"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="3"/>
+            <Label Content="3"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="3"/>
+            <Label Content="4"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Margin="3" />
+            <Label Content="5"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Margin="3" />
+            <Label Content="6"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="5" Margin="3"/>
+            <Label Content="7"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="6" Margin="3"  />
+            <Label Content="8"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="7" Margin="3" />
+            <Label Content="9"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="8" Margin="3"/>
+            <Label Content="10" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="9" Margin="3"/>
                
             </Grid>
       
@@ -112,6 +116,7 @@
                 Width="70" Height="50" Click="Delete_Clicked"  Margin="40"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 
               VerticalAlignment="Bottom"  Margin="40" Click="Finish_Clicked"/>
+       
 
     </Grid>
 </Window>

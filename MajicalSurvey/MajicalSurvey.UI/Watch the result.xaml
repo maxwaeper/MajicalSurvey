@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
         Title="Watch the result" Height="1000" Width="1000" WindowState="Maximized" FontSize="17">
-    <Grid Margin="10,0,0,0">
-
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -24,9 +23,9 @@
             <ComboBoxItem Name ="all" Content="Statistics for all surveys"></ComboBoxItem>
             <ComboBoxItem Name ="one" Content="Statistics for a particular survey"></ComboBoxItem>
         </ComboBox>
-        <TextBox  Name="TextBoxForSurveyName"  Background="AliceBlue" Grid.Column="1" Grid.Row="0" Width="300" Height="50" VerticalContentAlignment="Center"/>
+        <ComboBox Name="Survey_choice" Grid.Column="1" Grid.Row="0"/>
+        <!--<TextBox  Name="TextBoxForSurveyName"  Background="AliceBlue" Grid.Column="1" Grid.Row="0" Width="300" Height="50" VerticalContentAlignment="Center"/>-->
         <Button Grid.Column="2" Grid.Row="0" Content="Show" Width="200" Height="50" Click="Show_button_Clicked"/>
-        <!--<TextBox Name="OverallData" Margin="22,31,21,65" Grid.Row="1" Grid.RowSpan="2"></TextBox>-->
 
         <Grid  Name="OverallData" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Width="500" Height="200" Visibility="Visible">
             <Grid.ColumnDefinitions>

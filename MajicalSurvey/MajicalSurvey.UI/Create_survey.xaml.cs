@@ -26,8 +26,6 @@ namespace MajicalSurvey.UI
             InitializeComponent();
         }
 
-        //public int k { get { return k; } set { value = 1; } }
-
         List<Questions> list_quest = new List<Questions>();
         List<Answers> list_answers = new List<Answers>();
 
@@ -41,24 +39,82 @@ namespace MajicalSurvey.UI
         IAnswerRepository _answer = new AnswerRepository();
 
 
+        private void Add_Clicked(object sender, RoutedEventArgs e)
+        {
+            // !!!!!!!!!!!!!!!!! Шо это?
+            EnterSurveyName survey = new EnterSurveyName();
+
+            Valide_info();          
+
+            q.Name = Question_name.Text;
+            q.Survey = s;
+            list_quest.Add(q);
+
+            listView.Items.Add(q);
+
+           
+            foreach (TextBox t in stackpanel_textboxes.Children)
+            {
+                if (!string.IsNullOrWhiteSpace(t.Text))
+                {
+                    a.RadioButtonName = t.Text;
+                    a.Question = q;
+
+                    list_answers.Add(a);
+                }
+                        
+            }
+
+            Clear_info();
+            survey_textblock.Text = "You can rename your survey";
+
+           // listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
+
+        }
+
+        private void Delete_Clicked(object sender, RoutedEventArgs e)
+        {
+            listView.Items.Remove(listView.SelectedItem);
+
+            // ещё здесь нужно будет удалить вопрос с ответами из листов, только вот как ? :(
+            //list_quest.Remove()
+
+        }
+
+        private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
+        {
+            grid.Visibility = Visibility.Visible;
+        }
+
+        private void Current_version_exeption(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Sorry, this option is not available in current version of application", "Current version exception");
+            foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
+        }
+
+        private void Finish_Clicked(object sender, RoutedEventArgs e)
+        {
+            s.Name = Survey_name.Text;
+            s.Questions = list_quest;
+
+            Survey_name.Clear();
+
+           //_survey
+        }
+
         public void Clear_info()
         {
             Question_name.Clear();
             foreach (RadioButton r in Variant_stackpanel.Children) r.IsChecked = false;
 
             foreach (TextBox t in stackpanel_textboxes.Children) t.Clear();
-         
+
             grid.Visibility = Visibility.Hidden;
-            
+
         }
 
-        int k = 1;
-        int m = 1;
-
-        private void Add_Clicked(object sender, RoutedEventArgs e)
+        public void Valide_info()
         {
-            EnterSurveyName survey = new EnterSurveyName();
-
             string error = "Something is missed";
 
             if (string.IsNullOrWhiteSpace(Survey_name.Text))
@@ -69,89 +125,28 @@ namespace MajicalSurvey.UI
 
             if (string.IsNullOrWhiteSpace(Question_name.Text))
             {
-                MessageBox.Show("You haven't typed a question", error);
+                MessageBox.Show("You haven't written a question", error);
                 return;
             }
 
             if ((Radiobuttons.IsChecked == false) && (Cheakboxes.IsChecked == false) && (String.IsChecked == false))
             {
-                MessageBox.Show("You haven't chosen an answer variant", error);
+                MessageBox.Show("You haven't chosen an answer type", error);
                 return;
-            }          
-
-            q.Id = k;
-            q.Name = Question_name.Text;
-            q.Survey = s;
-            list_quest.Add(q);
-
-
-            listView.Items.Add(q); 
-
-            /////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            foreach (Control c in stackpanel_textboxes.Children)
-            {
-                if (!string.IsNullOrWhiteSpace(c.ToString()))
-                {
-                    a.RadioButtonName = c.ToString();
-                    a.Question = q;
-                    a.Id = m;
-
-                    list_answers.Add(a);
-                    m++;
-                }
-                        
             }
 
-            k++;
+            int c = 0;
+            foreach (TextBox t in stackpanel_textboxes.Children)
+            {
+                if (!string.IsNullOrWhiteSpace(t.Text)) break;
+                c++;
+            }
 
-            Clear_info();
-            if (k != 1) survey_textblock.Text = "You can rename your survey";
-
-           // listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
-
-        }
-
-        private void Delete_Clicked(object sender, RoutedEventArgs e)
-        {
-            listView.Items.Remove(listView.SelectedItem);
-
-        }
-
-        private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
-        {
-            grid.Visibility = Visibility.Visible;
-        }
-
-        private void Cheakboxes_Checked(object sender, RoutedEventArgs e)
-        {
-            //foreach (Control item in grid.Children)
-            //{
-            //    item.Visibility = Visibility.Visible;
-
-            //}
-            grid.Visibility = Visibility.Visible;
-        }
-
-        private void Item_Selection(object sender, SelectionChangedEventArgs e)
-        {
-            // Question_name.Text = { Binding Path = (Question)Name};
-            Question_name.Text = "hi";
-        }
-
-        private void String_Checked(object sender, RoutedEventArgs e)
-        {
-            grid.Visibility = Visibility.Hidden;
-        }
-
-        private void Number_Checked(object sender, RoutedEventArgs e)
-        {
-            grid.Visibility = Visibility.Hidden;
-        }
-
-        private void Finish_Clicked(object sender, RoutedEventArgs e)
-        {
-           ss.
+            if (c > 9)
+            {
+                MessageBox.Show("You haven't written any answers", error);
+                return;
+            }
         }
     }
 }
