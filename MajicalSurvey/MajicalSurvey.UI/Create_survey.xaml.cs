@@ -67,6 +67,7 @@ namespace MajicalSurvey.UI
 
             Clear_info();
             survey_textblock.Text = "You can rename your survey";
+           
 
            // listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
 
@@ -78,7 +79,7 @@ namespace MajicalSurvey.UI
 
             // ещё здесь нужно будет удалить вопрос с ответами из листов, только вот как ? :(
             //list_quest.Remove()
-
+            
         }
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
@@ -98,7 +99,7 @@ namespace MajicalSurvey.UI
             s.Questions = list_quest;
 
             Survey_name.Clear();
-
+            //ss.
            //_survey
         }
 

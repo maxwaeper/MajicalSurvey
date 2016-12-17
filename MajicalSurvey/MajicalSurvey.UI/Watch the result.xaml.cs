@@ -34,14 +34,10 @@ namespace MajicalSurvey.UI
 
             var surveysList = surveyRepo.GetAllSurveys();
 
-            Survey_choice.ItemsSource = surveysList;
-
-            //foreach (Surveys s in surveysList)
-            //{
-            //    ComboBoxItem i = new ComboBoxItem();
-            //    i.Content = s.Name;
-                
-            //}
+            for (int i = 0; i < surveysList.Count; i++)
+            {
+                Survey_choice.ItemsSource += surveysList[i].Name;
+            }
 
         }
 
@@ -120,5 +116,11 @@ namespace MajicalSurvey.UI
 
             }
         }
+        private void Block_choice(object sender, RoutedEventArgs e)
+        {
+           //aaaaaaaaaaa
+        }
+
     }
 }
+
