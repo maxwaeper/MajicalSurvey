@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
         Title="Watch the result" Height="1000" Width="1000" WindowState="Maximized" FontSize="17">
+    <Window.Background>
+        <ImageBrush ImageSource="Pictures/stars.jpg"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,7 +26,7 @@
             <ComboBoxItem Name ="all" Content="Statistics for all surveys"></ComboBoxItem>
             <ComboBoxItem Name ="one" Content="Statistics for a particular survey"></ComboBoxItem>
         </ComboBox>
-        <ComboBox Name="Survey_choice" Grid.Column="1" Grid.Row="0"/>
+        <ComboBox Name="Survey_choice" Grid.Column="1" Grid.Row="0" Width="400" Height="50" HorizontalContentAlignment="Center"/> 
         <!--<TextBox  Name="TextBoxForSurveyName"  Background="AliceBlue" Grid.Column="1" Grid.Row="0" Width="300" Height="50" VerticalContentAlignment="Center"/>-->
         <Button Grid.Column="2" Grid.Row="0" Content="Show" Width="200" Height="50" Click="Show_button_Clicked"/>
 
@@ -44,7 +47,7 @@
             <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" VerticalAlignment="Center"
                        HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
-            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="50" VerticalAlignment="Center" />
+            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Name="second_n" Grid.Column="1" Grid.Row="1" Width="50" VerticalAlignment="Center" />
             <TextBlock Name="third_n" Grid.Column="1" Grid.Row="2" Width="50" VerticalAlignment="Center"/>
         </Grid>
@@ -61,11 +64,11 @@
         </ListView>-->
         
         <DataGrid Name="data_all" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="data_allColumn1" Header="Survey №" Width="100"/>
+            <!--<DataGrid.Columns>-->
+                <!--<DataGridTextColumn x:Name="data_allColumn1" Header="Survey №" Width="100"/>
                 <DataGridTextColumn x:Name="data_allColumn2" Header="Name" Width="200"/>
-                <DataGridTextColumn x:Name="data_allColumn3" Header="Number of users" Width="200"/>
-            </DataGrid.Columns>
+                <DataGridTextColumn x:Name="data_allColumn3" Header="Number of users" Width="200"/>-->
+            <!--</DataGrid.Columns>-->
         </DataGrid>
         
          <DataGrid Name="data_one" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True" 

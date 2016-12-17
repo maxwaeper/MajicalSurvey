@@ -25,7 +25,9 @@ namespace MajicalSurvey.UI
         ISurveyRepository surveyRepo;
         IQuestionRepository questionRepo;
         IUsersRepository usersRepo;
+        
         public Watch_the_result()
+            
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
@@ -33,17 +35,22 @@ namespace MajicalSurvey.UI
             usersRepo = new UsersRepository();
 
             var surveysList = surveyRepo.GetAllSurveys();
+          
+            foreach (var item in surveysList)
+            {
+                Survey_choice.Items.Add(item.Name);
+            }
 
-            Survey_choice.ItemsSource = surveysList;
 
             //foreach (Surveys s in surveysList)
             //{
             //    ComboBoxItem i = new ComboBoxItem();
             //    i.Content = s.Name;
-                
+
             //}
 
         }
+
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
@@ -51,12 +58,13 @@ namespace MajicalSurvey.UI
             OverallData.Visibility = Visibility.Visible;
             var surveysList = surveyRepo.GetAllSurveys();
 
+
             if (ComboBox.SelectedItem == all)
             //do methods for all
             {
                 data_all.Visibility = Visibility.Visible;
                 first.Text = "The number of surveys:";
-                second.Text = "The number of surveys for a user:";
+                second.Text = "The number of unique users:";
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
@@ -71,12 +79,21 @@ namespace MajicalSurvey.UI
 
                     third_n.Text = "0";
                 }
-                foreach (var item in surveysList)
+
+                List<ShowResultsInDG> print = new List<ShowResultsInDG>();
+
+                foreach (var survey in surveysList)
                 {
-                    data_all.ItemsSource = item.Id + item.Name + methods.UsersOfSurvey(item.Name);
+                    print.Add(new ShowResultsInDG
+                    {
+                        Count =survey.Id,
+                        Name =survey.Name,
+                        Users = methods.UsersOfSurvey(survey.Name).Count()
+                    });
+                    
                 }
-               
-               
+                data_all.ItemsSource = print;
+
 
                 //+подробнее в табличке в DataGrid в виде: Survey_Name ---- Users namber
                 //сортировка по популярности
@@ -85,8 +102,7 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
-                
-
+               
                 // проверка работает, бд пустая
                 //int k = 0;
 
@@ -108,11 +124,13 @@ namespace MajicalSurvey.UI
                 third.Text = "The number of people who have answered the survey:";
 
 
-                //first_n.Text = TextBoxForSurveyName.Text;
+                first_n.Text = Survey_choice.SelectedItem.ToString();
+
+
                 //second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
                 //third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
 
-              
+
 
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
                 //---доля в отношении ко всем вариантам ответа ---%
