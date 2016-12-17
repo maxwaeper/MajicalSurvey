@@ -25,9 +25,12 @@ namespace MajicalSurvey.UI
         }
 
         private void ButtonProceed_Click(object sender, RoutedEventArgs e)
-        {
+        { ChooseSurvey c = new ChooseSurvey();
             Pass_survey next = new Pass_survey();
             next.ShowDialog();
+            ButtonProceed.IsCancel = true;
+            
+                 
         }
     }
 }

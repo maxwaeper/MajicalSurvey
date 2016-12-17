@@ -102,8 +102,8 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
-               
-                // проверка работает, бд пустая
+
+                // проверка работает, но бд пустая
                 //int k = 0;
 
                 //foreach (Surveys s in surveyRepo.GetAllSurveys())
@@ -117,14 +117,23 @@ namespace MajicalSurvey.UI
                 //    return;
                 //}
 
+                try
+                {
+                    first_n.Text = Survey_choice.SelectedItem.ToString();
+                }
+                catch (NullReferenceException)
+                {
+
+                    MessageBox.Show("You haven't chosen any survey");
+                    return;
+                }
+
                 data_one.Visibility = Visibility.Visible;
 
                 first.Text = "Survey's name:";
                 second.Text = "The number of its questions:";
-                third.Text = "The number of people who have answered the survey:";
-
-
-                first_n.Text = Survey_choice.SelectedItem.ToString();
+                third.Text = "The number of people who have answered the survey:";             
+                
 
 
                 //second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
@@ -137,6 +146,17 @@ namespace MajicalSurvey.UI
                 //(?) самые популярные варианты ответов среди пользователей
 
             }
+        }
+
+        private void all_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = false;
+        }
+
+        private void one_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = true;
+
         }
     }
 }

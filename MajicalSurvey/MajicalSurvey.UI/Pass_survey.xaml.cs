@@ -22,6 +22,15 @@ namespace MajicalSurvey.UI
         public Pass_survey()
         {
             InitializeComponent();
+            ChooseSurvey c = new ChooseSurvey();
+            c.Close();
+
+        }
+
+        private void Next_Clicked(object sender, RoutedEventArgs e)
+        {
+            foreach (RadioButton r in answer_stackpanel.Children) r.IsChecked = false;
+            
         }
     }
 }

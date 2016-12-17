@@ -5,22 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Pass a survey" Height="871.25" Width="1356.818" WindowState="Maximized" FontSize="17">
+        Title="Pass a survey" Height="1000" Width="1000" WindowState="Maximized" FontSize="17">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="180*"/>
-            <RowDefinition Height="509*"/>
-            <RowDefinition Height="151*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="TextBlockSurvey" Grid.ColumnSpan="2" Margin="73,29,73,41" FontSize="72" Text="Text" TextAlignment="Center"></TextBlock>
-        <TextBlock Grid.Row="1" Margin="0,0,0,191" FontSize="36" TextAlignment="Center" Text="Question"/>
-        <ListBox Grid.Row="1" Margin="86,79,73,10" Grid.RowSpan="2" Grid.Column="1"/>
 
+        <TextBlock Name="surveyName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
+                   FontSize="19" Background="Azure"/>
 
+        <TextBlock Name="Number" Grid.Row="1" Grid.Column="0" Width="20" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
+                   Text="10" VerticalAlignment="Center"  Background="AliceBlue"/>
+        <TextBlock Name="questionName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="700" Height="100" 
+                   HorizontalAlignment="Left" Margin="100 0 0 0" Background="Aqua" TextWrapping="Wrap"/>
+
+        <StackPanel Name="answer_stackpanel" Grid.Row="2" Grid.Column="0" Margin="80 0 0 0">
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Green"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Red"/>
+
+        </StackPanel>
+
+        <Button Name="previous" Content="Previous" Grid.Row="3" Grid.Column="0" Width="70" Height="70" HorizontalAlignment="Center" />
+        <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked"/>
 
 
     </Grid>
