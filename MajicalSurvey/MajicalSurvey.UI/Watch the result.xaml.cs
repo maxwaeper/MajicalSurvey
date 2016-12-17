@@ -1,4 +1,5 @@
 ﻿using MajicalSurvey.Data;
+using MajicalSurvey.Data.Entities;
 using MajicalSurvey.Data.IRepositoties;
 using MajicalSurvey.Data.Repositories;
 using System;
@@ -25,6 +26,7 @@ namespace MajicalSurvey.UI
         ISurveyRepository surveyRepo;
         IQuestionRepository questionRepo;
         IUsersRepository usersRepo;
+        IAnswerRepository answersRepo;
         
         public Watch_the_result()
             
@@ -33,6 +35,7 @@ namespace MajicalSurvey.UI
             surveyRepo = new SurveyRepository();
             questionRepo = new QuestionRepository();
             usersRepo = new UsersRepository();
+            answersRepo = new AnswerRepository();
 
             var surveysList = surveyRepo.GetAllSurveys();
           
@@ -125,11 +128,46 @@ namespace MajicalSurvey.UI
 
 
                 first_n.Text = Survey_choice.SelectedItem.ToString();
+                second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
+                third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
 
 
-                //second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
-                //third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+                List<Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
+                List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
 
+                foreach (var question in questionslist)
+                {
+                    int questionID = questionRepo.GetQuestionByName(question.Name);
+                    List<Answers> answers = answersRepo.GetAllAnswers(questionID);
+                    List<string> ans = new List<string>();
+                    foreach (var answer in answers)
+                    {
+                        ans.Add(answer.RadioButtonName);
+                    }
+                    List<int> numberofusers = new List<int>();
+                    List<int> proportion = new List<int>();
+                    List<String> percentage = new List<string>();
+                    foreach (var answer in answers)
+                    {
+                        int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
+                        int usersnum = methods.GetUserssByAnswersId(answersID).Count();
+                        int propor = usersnum/methods.ListForProportion(questionID).Count();
+                        string percent = (propor * 100).ToString() + "%";
+                        numberofusers.Add(usersnum);
+                        proportion.Add(propor);
+                        percentage.Add(percent);
+                    }
+                    print.Add(new ShowResultsForOneInDG
+                    {
+                        Question = question.Name,
+                        Answers = ans,
+                        Chosen = numberofusers,
+                        Proportion = proportion,
+                        Persentage = percentage
+                    });
+                    
+                }
+                data_all.ItemsSource = print;
 
 
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа

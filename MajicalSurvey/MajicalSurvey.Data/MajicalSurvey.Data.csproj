@@ -103,6 +103,7 @@
     <Compile Include="Repositories\SurveyRepository.cs" />
     <Compile Include="Entities\Surveys.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="ShowResultsForOneInDG.cs" />
     <Compile Include="ShowResultsInDG.cs" />
   </ItemGroup>
   <ItemGroup>
