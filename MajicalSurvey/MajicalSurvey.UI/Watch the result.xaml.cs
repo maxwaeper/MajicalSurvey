@@ -43,11 +43,8 @@ namespace MajicalSurvey.UI
             {
                 Survey_choice.Items.Add(item.Name);
             }
-
-
         }
         
-
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
             MethodsForStatistics methods = new MethodsForStatistics();
@@ -61,20 +58,10 @@ namespace MajicalSurvey.UI
                 data_all.Visibility = Visibility.Visible;
                 first.Text = "The number of surveys:";
                 second.Text = "The number of unique users:";
-               // third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
                 second_n.Text = usersRepo.GetAllUsers().Count().ToString();
-
-                //try
-                //{
-                //     third_n.Text = (surveyRepo.GetAllSurveys().Count() % usersRepo.GetAllUsers().Count()).ToString();
-                //}
-                //catch (DivideByZeroException)
-                //{
-
-                //    third_n.Text = "0";
-                //}
+              
 
                 List<ShowResultsInDG> print = new List<ShowResultsInDG>();
 
@@ -89,9 +76,7 @@ namespace MajicalSurvey.UI
                     
                 }
                 data_all.ItemsSource = print;
-
-
-               
+             
             }
 
             if (ComboBox.SelectedItem == one)
@@ -121,7 +106,6 @@ namespace MajicalSurvey.UI
                 second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
                 third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
 
-                //var survey = Survey_choice.SelectedItem as Surveys;
                 List <Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
                 List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
 
@@ -147,8 +131,6 @@ namespace MajicalSurvey.UI
                             propor = 0;
                         }
 
-                      
-
                         string percent = (propor * 100).ToString() + "%";
                         print.Add(new ShowResultsForOneInDG
                         {
@@ -162,11 +144,8 @@ namespace MajicalSurvey.UI
                     }
                  
                 }
-
                 data_one.ItemsSource = print;
-
-               
-
+              
             }
 
         }
