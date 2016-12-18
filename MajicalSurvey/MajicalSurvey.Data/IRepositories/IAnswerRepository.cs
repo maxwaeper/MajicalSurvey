@@ -12,6 +12,6 @@ namespace MajicalSurvey.Data
 
         List<Answers> GetAnswers();
         int GetAnswersByName(string name);
-        // void ScoreIncrement(string name);
+
     }
 }

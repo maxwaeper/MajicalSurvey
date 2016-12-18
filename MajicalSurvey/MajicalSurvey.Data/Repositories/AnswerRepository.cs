@@ -17,20 +17,20 @@ namespace MajicalSurvey.Data
             _context = new Context();
         }
 
-        public List<Answers> GetAllAnswers()//delete questionId cause os uselessnes
-            //по номеру вопроса возвращает список вариантов ответов
+        public List<Answers> GetAllAnswers()
+
         {
             return _context.Answers.Include(x => x.Question).ToList();
         }
 
       public List<Answers> GetAnswers()
-            //возвращает все варианты ответов для всех опросников
+           
         {
             return GetAllElements().ToList();
         }
 
         public int GetAnswersByName(string name)
-        //по вопросу возвращает его айди
+
         {
             return GetCertainElement(x => x.RadioButtonName == name).Id;
         }

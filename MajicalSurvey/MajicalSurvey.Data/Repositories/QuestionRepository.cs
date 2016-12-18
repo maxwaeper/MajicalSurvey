@@ -18,19 +18,14 @@ namespace MajicalSurvey.Data
         }
 
         public List<Questions> GetAllQuestions(string name)
-            //по названию опросника возвращает список вопросов
         {
             return _context.Questions.Include(x => x.Survey).Where(y=>y.Survey.Name==name).ToList();
         }
 
         public int GetQuestionByName(string name)
-            //по вопросу возвращает его айди
         {
             return GetCertainElement(x => x.Name == name).Id;
         }
-
-
-
         
     }
 }
