@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MajicalSurvey.Data;
-
+using System.Globalization;
 
 namespace MajicalSurvey.UI
 {
@@ -46,12 +46,15 @@ namespace MajicalSurvey.UI
             {
                 if (!string.IsNullOrWhiteSpace(t.Text))
                 {
-                    list_answers.Add(new Answers { RadioButtonName=t.Text,
-                        Question =list_quest.Last()});
+                    list_answers.Add(new Answers
+                    {
+                        RadioButtonName = t.Text,
+                        Question = list_quest.Last()
+                    });
                 }
-                        
+
             }
-            
+
 
             Clear_info();
             survey_textblock.Text = "You can rename your survey";
@@ -59,12 +62,12 @@ namespace MajicalSurvey.UI
 
         private void Delete_Clicked(object sender, RoutedEventArgs e)
         {
-            
+
             var item = listView.SelectedItem as Questions;
-            list_quest.RemoveAll(x=>x.Name==item.Name);
+            list_quest.RemoveAll(x => x.Name == item.Name);
             list_answers.RemoveAll(x => x.Question.Name == item.Name);
             listView.Items.Remove(listView.SelectedItem);
-            
+
         }
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
@@ -80,7 +83,7 @@ namespace MajicalSurvey.UI
 
         private void Finish_Clicked(object sender, RoutedEventArgs e)
         {
-            _survey.Insert(new Surveys { Name = Survey_name.Text, Questions = list_quest});
+            _survey.Insert(new Surveys { Name = Survey_name.Text, Questions = list_quest });
 
             foreach (var item in list_quest)
             {
@@ -92,9 +95,9 @@ namespace MajicalSurvey.UI
                 _answer.Insert(item);
             }
             _answer.Save();
-            MessageBox.Show("Survey created");
+            MessageBox.Show("Survey created", "Well done!");
             Close();
-           //_survey
+
         }
 
         public void Clear_info()
@@ -146,7 +149,7 @@ namespace MajicalSurvey.UI
 
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+
             if (listView.SelectedItem != null)
             {
                 Clear_info();

@@ -25,7 +25,6 @@
                   VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4" MouseDoubleClick="listView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="50"/>
                     <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="430"/>
                 </GridView>
             </ListView.View>
@@ -111,9 +110,10 @@
 
 
         <Button Grid.Column="0" Grid.Row="2" Content="Save changes" x:Name="ButtonSaveChanges"  Width="120" Height="50" Click="Save_Changes_Clicked"
-                HorizontalAlignment="Right"  Margin="0,206,10,128" IsEnabled="False"/>
+                HorizontalAlignment="Right" Margin="0 50 15 0" IsEnabled="False"/>
+        
         <Button Grid.Column="0" Grid.Row="2" Content="Add" Name="Add" Width="70" Height="50" Click="Add_Clicked"
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="40" />
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 40" />
         <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Width="70" Height="50" Click="Delete_Clicked"  Margin="40"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 

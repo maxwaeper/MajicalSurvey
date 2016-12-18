@@ -19,23 +19,31 @@
         </Grid.RowDefinitions>
 
         <TextBlock Name="surveyName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
-                   FontSize="19" Background="Azure"/>
+                   FontSize="19"/>
         <TextBlock Name="Counter" Grid.Row="0" Grid.Column="1" Width="400" Height="80" TextWrapping="Wrap" HorizontalAlignment="Right"
                    Margin="40"/>
 
         <TextBlock Name="Number" Grid.Row="1" Grid.Column="0" Width="20" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
-                   Text="10" VerticalAlignment="Center"  Background="AliceBlue"/>
+                    VerticalAlignment="Center" />
         <TextBlock Name="questionName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="700" Height="100" 
-                   HorizontalAlignment="Left" Margin="100 0 0 0" Background="Aqua" TextWrapping="Wrap"/>
+                   HorizontalAlignment="Left" Margin="100 0 0 0" TextWrapping="Wrap"/>
 
         <StackPanel Name="answer_stackpanel" Grid.Row="2" Grid.Column="0" Margin="80 0 0 0">
-            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Green"/>
-            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Red"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen" Visibility="Hidden"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
 
         </StackPanel>
-
-        <Button Name="previous" Content="Previous" Grid.Row="3" Grid.Column="0" Width="70" Height="70" HorizontalAlignment="Center" Click="previous_Click" />
         <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked"/>
+        <Button Name="Complete" Content="Complete" Grid.Row="3" Grid.Column="1" Width="80" Height="70" HorizontalAlignment="Center"
+                Visibility="Collapsed" Click="Complete_Clicked"/>
 
 
     </Grid>

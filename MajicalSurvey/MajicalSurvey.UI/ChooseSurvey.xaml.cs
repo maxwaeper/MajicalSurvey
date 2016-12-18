@@ -29,10 +29,8 @@ namespace MajicalSurvey.UI
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
-            
-
+           
             var surveysList = surveyRepo.GetAllSurveys();
-
             survey_listview.ItemsSource = surveysList;
         }
 
@@ -40,11 +38,25 @@ namespace MajicalSurvey.UI
         {
             Surveys s = new Surveys();
             var survey = survey_listview.SelectedItem as Surveys;
-            s = surveyRepo.GetSurveyByName(survey.Name);
-            
-            Pass_survey next = new Pass_survey(s);
+            try
+            {
+                s = surveyRepo.GetSurveyByName(survey.Name);
+
+            }
+            catch (NullReferenceException)
+            {
+
+                MessageBox.Show("You haven't chosen any survey","Oops");
+                return;
+            }
+            var userName = TextBoxEnterName.Text;
+            Pass_survey next = new Pass_survey(s,userName);
             next.ShowDialog();
-            //ButtonProceed.IsCancel = true;
+        }
+
+        private void Cancel_Clicked(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
