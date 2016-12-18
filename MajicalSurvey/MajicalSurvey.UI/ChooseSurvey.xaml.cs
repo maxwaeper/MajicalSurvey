@@ -24,32 +24,25 @@ namespace MajicalSurvey.UI
     /// </summary>
     public partial class ChooseSurvey : Window
     {
-        ISurveyRepository surveyRepo = new SurveyRepository();
-
-        public SurveyRepository sr { get; set; }
-        public Surveys s { get; set; }
-        public Users u { get; set; }
-
+        ISurveyRepository surveyRepo; 
         public ChooseSurvey()
         {
             InitializeComponent();
+            surveyRepo = new SurveyRepository();
+            
 
             var surveysList = surveyRepo.GetAllSurveys();
 
-            foreach (Surveys item in surveysList)
-            {
-                survey_listview.Items.Add(item.Name);
-            }
+            survey_listview.ItemsSource = surveysList;
         }
 
         public void ButtonProceed_Click(object sender, RoutedEventArgs e)
         {
-
-            s = sr.GetSurveyByName(survey_listview.SelectedItem.ToString());
-            u.Name = TextBoxEnterName.Text;
+            Surveys s = new Surveys();
+            var survey = survey_listview.SelectedItem as Surveys;
+            s = surveyRepo.GetSurveyByName(survey.Name);
             
-
-            Pass_survey next = new Pass_survey();
+            Pass_survey next = new Pass_survey(s);
             next.ShowDialog();
             //ButtonProceed.IsCancel = true;
         }

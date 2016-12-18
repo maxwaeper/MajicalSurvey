@@ -110,7 +110,7 @@
             </Grid>
 
 
-        <Button Grid.Column="0" Grid.Row="2" Content="Save changes" Name="Save_changes"  Width="120" Height="50" Click="Save_Changes_Clicked"
+        <Button Grid.Column="0" Grid.Row="2" Content="Save changes" x:Name="ButtonSaveChanges"  Width="120" Height="50" Click="Save_Changes_Clicked"
                 HorizontalAlignment="Right"  Margin="0,206,10,128" IsEnabled="False"/>
         
         <Button Grid.Column="0" Grid.Row="2" Content="Add" Name="Add" Width="70" Height="50" Click="Add_Clicked"

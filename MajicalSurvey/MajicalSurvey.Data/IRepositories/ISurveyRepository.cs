@@ -8,7 +8,8 @@ namespace MajicalSurvey.Data
 {
     public interface ISurveyRepository : IRepository<Surveys>
     {
-       // Surveys GetSurveyByName(string name);
+        // Surveys GetSurveyByName(string name);
+        Surveys GetSurveyByName(string name);
 
         List<Surveys> GetAllSurveys();
     }

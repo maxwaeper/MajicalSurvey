@@ -146,9 +146,11 @@ namespace MajicalSurvey.UI
 
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
             if (listView.SelectedItem != null)
             {
                 Clear_info();
+                ButtonSaveChanges.IsEnabled = true;
                 grid.Visibility = Visibility.Visible;
                 var name = listView.SelectedItem as Questions;
                 List<Answers> list = list_answers.FindAll(x => x.Question.Name == name.Name);
@@ -176,14 +178,30 @@ namespace MajicalSurvey.UI
 
         private void Save_Changes_Clicked(object sender, RoutedEventArgs e)
         {
-            // здесь очень хитрый ход. Эта кнопка удаляет изначальную версию вопроса и добавляет новую
-           // в то время как кнопка добавить будет недоступна
-             //   только вот к тем кликам обратиться нельзя
+            var remove = listView.SelectedItem as Questions;
+            var index = list_quest.FindIndex(x => x.Name == remove.Name);
+            listView.Items.RemoveAt(index);
+            listView.Items.Add(new Questions { Name = Question_name.Text });
+            list_quest.RemoveAt(index);
+            list_answers.RemoveAll(x => x.Question.Name == remove.Name);
+            Valide_info();
 
-            Add.IsEnabled = false;
-            //Delete_Clicked();
-           // Add_Clicked;
+            list_quest.Insert(index, new Questions { Name = Question_name.Text });
 
+            foreach (TextBox t in stackpanel_textboxes.Children)
+            {
+                if (!string.IsNullOrWhiteSpace(t.Text))
+                {
+                    list_answers.Add(new Answers
+                    {
+                        RadioButtonName = t.Text,
+                        Question = list_quest[index]
+                    });
+                }
+
+            }
+            Clear_info();
+            ButtonSaveChanges.IsEnabled = false;
         }
     }
 }
