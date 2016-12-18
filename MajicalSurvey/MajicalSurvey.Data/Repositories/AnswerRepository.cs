@@ -27,6 +27,12 @@ namespace MajicalSurvey.Data
             //возвращает все варианты ответов для всех опросников
         {
             return GetAllElements().ToList();
-        }     
+        }
+        public int GetAnswersByName(string name)
+        //по вопросу возвращает его айди
+        {
+            return GetCertainElement(x => x.RadioButtonName == name).Id;
+        }
+
     }
 }

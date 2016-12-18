@@ -1,5 +1,6 @@
 ﻿using MajicalSurvey.Data;
-using MajicalSurvey.Data.IRepositories;
+using MajicalSurvey.Data.Entities;
+using MajicalSurvey.Data.IRepositoties;
 using MajicalSurvey.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,23 +26,27 @@ namespace MajicalSurvey.UI
         ISurveyRepository surveyRepo;
         IQuestionRepository questionRepo;
         IUsersRepository usersRepo;
+        IAnswerRepository answersRepo;
+        
         public Watch_the_result()
+            
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
             questionRepo = new QuestionRepository();
             usersRepo = new UsersRepository();
+            answersRepo = new AnswerRepository();
 
-            
+            var surveysList = surveyRepo.GetAllSurveys();
+          
+            foreach (var item in surveysList)
+            {
+                Survey_choice.Items.Add(item.Name);
+            }
 
-            //foreach (Surveys s in surveysList)
-            //{
-            //    ComboBoxItem i = new ComboBoxItem();
-            //    i.Content = s.Name;
-                
-            //}
 
         }
+
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
@@ -49,17 +54,18 @@ namespace MajicalSurvey.UI
             OverallData.Visibility = Visibility.Visible;
             var surveysList = surveyRepo.GetAllSurveys();
 
+
             if (ComboBox.SelectedItem == all)
             //do methods for all
             {
                 data_all.Visibility = Visibility.Visible;
                 first.Text = "The number of surveys:";
-                second.Text = "The number of surveys for a user:";
+                second.Text = "The number of unique users:";
                 third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
                 second_n.Text = usersRepo.GetAllUsers().Count().ToString();
-                
+
                 try
                 {
                      third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
@@ -70,19 +76,20 @@ namespace MajicalSurvey.UI
                     third_n.Text = "0";
                 }
 
-                List<DataGridViewAllSurveys> listAll = new List<DataGridViewAllSurveys>();
+                List<ShowResultsInDG> print = new List<ShowResultsInDG>();
 
-                foreach (var item in surveysList)
+                foreach (var survey in surveysList)
                 {
-                    listAll.Add(new DataGridViewAllSurveys
+                    print.Add(new ShowResultsInDG
                     {
-                        Id = item.Id, SurveyName = item.Name, UsersCount = methods.UsersOfSurvey(item.Name).Count()
+                        Count =survey.Id,
+                        Name =survey.Name,
+                        Users = methods.UsersOfSurvey(survey.Name).Count()
                     });
+                    
                 }
+                data_all.ItemsSource = print;
 
-                data_all.ItemsSource = listAll;
-               
-               
 
                 //+подробнее в табличке в DataGrid в виде: Survey_Name ---- Users namber
                 //сортировка по популярности
@@ -91,11 +98,7 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
-                foreach (var item in surveysList)
-                {
-                    Survey_choice.Items.Add(item.Name);
-                }
-
+               
                 // проверка работает, бд пустая
                 //int k = 0;
 
@@ -116,19 +119,76 @@ namespace MajicalSurvey.UI
                 second.Text = "The number of its questions:";
                 third.Text = "The number of people who have answered the survey:";
 
+                try
+                {
+                    first_n.Text = Survey_choice.SelectedItem.ToString();
+                }
+                catch (NullReferenceException)
+                {
 
-                //first_n.Text = TextBoxForSurveyName.Text;
-                //second_n.Text = questionRepo.GetAllQuestions(TextBoxForSurveyName.Text).Count().ToString();
-                //third_n.Text = methods.UsersOfSurvey(TextBoxForSurveyName.Text).Count().ToString();
+                    MessageBox.Show("You haven't chosen any survey");
+                    return;
+                }
 
-              
+                second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
+                third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
+
+
+                List<Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
+                List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
+
+                foreach (var question in questionslist)
+                {
+                    int questionID = questionRepo.GetQuestionByName(question.Name);
+                    List<Answers> answers = answersRepo.GetAllAnswers(questionID);
+                    List<string> ans = new List<string>();
+                    foreach (var answer in answers)
+                    {
+                        ans.Add(answer.RadioButtonName);
+                    }
+                    List<int> numberofusers = new List<int>();
+                    List<int> proportion = new List<int>();
+                    List<String> percentage = new List<string>();
+                    foreach (var answer in answers)
+                    {
+                        int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
+                        int usersnum = methods.GetUserssByAnswersId(answersID).Count();
+                        int propor = usersnum/methods.ListForProportion(questionID).Count();
+                        string percent = (propor * 100).ToString() + "%";
+                        numberofusers.Add(usersnum);
+                        proportion.Add(propor);
+                        percentage.Add(percent);
+                    }
+                    print.Add(new ShowResultsForOneInDG
+                    {
+                        Question = question.Name,
+                        Answers = ans,
+                        Chosen = numberofusers,
+                        Proportion = proportion,
+                        Persentage = percentage
+                    });
+                    
+                }
+                data_all.ItemsSource = print;
+
 
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
                 //---доля в отношении ко всем вариантам ответа ---%
                 //(?) самые популярные варианты ответов среди пользователей
 
             }
+
         }
 
+        private void all_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = false;
+        }
+
+        private void one_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = true;
+
+        }
     }
 }
