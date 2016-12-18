@@ -45,13 +45,6 @@ namespace MajicalSurvey.UI
             }
 
 
-            //foreach (Surveys s in surveysList)
-            //{
-            //    ComboBoxItem i = new ComboBoxItem();
-            //    i.Content = s.Name;
-
-            //}
-
         }
 
 
@@ -126,8 +119,17 @@ namespace MajicalSurvey.UI
                 second.Text = "The number of its questions:";
                 third.Text = "The number of people who have answered the survey:";
 
+                try
+                {
+                    first_n.Text = Survey_choice.SelectedItem.ToString();
+                }
+                catch (NullReferenceException)
+                {
 
-                first_n.Text = Survey_choice.SelectedItem.ToString();
+                    MessageBox.Show("You haven't chosen any survey");
+                    return;
+                }
+
                 second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
                 third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
 
@@ -175,6 +177,18 @@ namespace MajicalSurvey.UI
                 //(?) самые популярные варианты ответов среди пользователей
 
             }
+
+        }
+
+        private void all_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = false;
+        }
+
+        private void one_Selected(object sender, RoutedEventArgs e)
+        {
+            Survey_choice.IsEnabled = true;
+
         }
     }
 }

@@ -41,10 +41,8 @@ namespace MajicalSurvey.UI
 
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
-            // !!!!!!!!!!!!!!!!! Шо это?
-            EnterSurveyName survey = new EnterSurveyName();
 
-            Valide_info();          
+            if (!Valide_info()) return;
 
             q.Name = Question_name.Text;
             q.Survey = s;
@@ -61,8 +59,7 @@ namespace MajicalSurvey.UI
                     a.Question = q;
 
                     list_answers.Add(a);
-                }
-                        
+                }                       
             }
 
             Clear_info();
@@ -114,26 +111,26 @@ namespace MajicalSurvey.UI
 
         }
 
-        public void Valide_info()
+        public bool Valide_info()
         {
             string error = "Something is missed";
 
             if (string.IsNullOrWhiteSpace(Survey_name.Text))
             {
                 MessageBox.Show("You haven't named a survey", error);
-                return;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(Question_name.Text))
             {
                 MessageBox.Show("You haven't written a question", error);
-                return;
+                return false;
             }
 
-            if ((Radiobuttons.IsChecked == false) && (Cheakboxes.IsChecked == false) && (String.IsChecked == false))
+            if (Radiobuttons.IsChecked == false)
             {
                 MessageBox.Show("You haven't chosen an answer type", error);
-                return;
+                return false;
             }
 
             int c = 0;
@@ -146,8 +143,10 @@ namespace MajicalSurvey.UI
             if (c > 9)
             {
                 MessageBox.Show("You haven't written any answers", error);
-                return;
+                return false;
             }
+
+            return true;
         }
     }
 }
