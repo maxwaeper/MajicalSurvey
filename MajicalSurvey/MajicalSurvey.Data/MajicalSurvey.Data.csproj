@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridViewAllSurveys.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="IRepositories\IUsersRepository.cs" />
     <Compile Include="MethodsForStatistics.cs" />

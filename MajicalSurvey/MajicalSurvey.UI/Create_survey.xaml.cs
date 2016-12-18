@@ -29,56 +29,42 @@ namespace MajicalSurvey.UI
         List<Questions> list_quest = new List<Questions>();
         List<Answers> list_answers = new List<Answers>();
 
-        Surveys s = new Surveys();
-        Questions q = new Questions();
-        Answers a = new Answers();
-
         ISurveyRepository _survey = new SurveyRepository();
-        IRepository<Surveys> ss = new SurveyRepository();
         IQuestionRepository _question = new QuestionRepository();
         IAnswerRepository _answer = new AnswerRepository();
 
 
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
-            // !!!!!!!!!!!!!!!!! Шо это?
-            EnterSurveyName survey = new EnterSurveyName();
-
-            Valide_info();          
-
+            Questions q = new Questions();
+            Valide_info();
             q.Name = Question_name.Text;
-            q.Survey = s;
-            list_quest.Add(q);
-
             listView.Items.Add(q);
+            list_quest.Add(new Questions { Name = Question_name.Text });
 
-           
             foreach (TextBox t in stackpanel_textboxes.Children)
             {
                 if (!string.IsNullOrWhiteSpace(t.Text))
                 {
-                    a.RadioButtonName = t.Text;
-                    a.Question = q;
-
-                    list_answers.Add(a);
+                    list_answers.Add(new Answers { RadioButtonName=t.Text,
+                        Question =list_quest.Last()});
                 }
                         
             }
+            
 
             Clear_info();
             survey_textblock.Text = "You can rename your survey";
-
-           // listView.ItemsSource = questionRepo.GetAllQuestions(survey.SurveyName);
-
         }
 
         private void Delete_Clicked(object sender, RoutedEventArgs e)
         {
+            
+            var item = listView.SelectedItem as Questions;
+            list_quest.RemoveAll(x=>x.Name==item.Name);
+            list_answers.RemoveAll(x => x.Question.Name == item.Name);
             listView.Items.Remove(listView.SelectedItem);
-
-            // ещё здесь нужно будет удалить вопрос с ответами из листов, только вот как ? :(
-            //list_quest.Remove()
-
+            
         }
 
         private void Radiobuttons_Checked(object sender, RoutedEventArgs e)
@@ -94,11 +80,20 @@ namespace MajicalSurvey.UI
 
         private void Finish_Clicked(object sender, RoutedEventArgs e)
         {
-            s.Name = Survey_name.Text;
-            s.Questions = list_quest;
+            _survey.Insert(new Surveys { Name = Survey_name.Text, Questions = list_quest});
 
-            Survey_name.Clear();
+            foreach (var item in list_quest)
+            {
+                _question.Insert(item);
+            }
 
+            foreach (var item in list_answers)
+            {
+                _answer.Insert(item);
+            }
+            _answer.Save();
+            MessageBox.Show("Survey created");
+            Close();
            //_survey
         }
 
@@ -129,7 +124,7 @@ namespace MajicalSurvey.UI
                 return;
             }
 
-            if ((Radiobuttons.IsChecked == false) && (Cheakboxes.IsChecked == false) && (String.IsChecked == false))
+            if ((Radiobuttons.IsChecked == false) && (Checkboxes.IsChecked == false) && (String.IsChecked == false))
             {
                 MessageBox.Show("You haven't chosen an answer type", error);
                 return;
@@ -146,6 +141,36 @@ namespace MajicalSurvey.UI
             {
                 MessageBox.Show("You haven't written any answers", error);
                 return;
+            }
+        }
+
+        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listView.SelectedItem != null)
+            {
+                Clear_info();
+                grid.Visibility = Visibility.Visible;
+                var name = listView.SelectedItem as Questions;
+                List<Answers> list = list_answers.FindAll(x => x.Question.Name == name.Name);
+                var i = 0;
+                foreach (var item in list_quest)
+                {
+                    if (item.Name == name.Name)
+                        Question_name.Text = item.Name;
+                }
+                foreach (TextBox t in stackpanel_textboxes.Children)
+                {
+                    if (i < list.Count)
+                    {
+                        if (list[i].Question.Name == name.Name)
+                            t.Text = list[i].RadioButtonName;
+                    }
+                    else
+                        t.Text = null;
+                    i++;
+                }
+
+                Radiobuttons.IsChecked = true;
             }
         }
     }

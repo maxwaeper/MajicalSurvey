@@ -14,5 +14,6 @@ namespace MajicalSurvey.Data
         public string Name { get; set; }
 
         public Surveys Survey { get; set; }
+        public List<Answers> Answers { get; set; }
     }
 }

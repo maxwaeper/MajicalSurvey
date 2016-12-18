@@ -32,9 +32,7 @@ namespace MajicalSurvey.UI
             questionRepo = new QuestionRepository();
             usersRepo = new UsersRepository();
 
-            var surveysList = surveyRepo.GetAllSurveys();
-
-            Survey_choice.ItemsSource = surveysList;
+            
 
             //foreach (Surveys s in surveysList)
             //{
@@ -61,7 +59,7 @@ namespace MajicalSurvey.UI
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
                 second_n.Text = usersRepo.GetAllUsers().Count().ToString();
-
+                
                 try
                 {
                      third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
@@ -71,10 +69,18 @@ namespace MajicalSurvey.UI
 
                     third_n.Text = "0";
                 }
+
+                List<DataGridViewAllSurveys> listAll = new List<DataGridViewAllSurveys>();
+
                 foreach (var item in surveysList)
                 {
-                    data_all.ItemsSource = item.Id + item.Name + methods.UsersOfSurvey(item.Name);
+                    listAll.Add(new DataGridViewAllSurveys
+                    {
+                        Id = item.Id, SurveyName = item.Name, UsersCount = methods.UsersOfSurvey(item.Name).Count()
+                    });
                 }
+
+                data_all.ItemsSource = listAll;
                
                
 
@@ -85,7 +91,10 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
-                
+                foreach (var item in surveysList)
+                {
+                    Survey_choice.Items.Add(item.Name);
+                }
 
                 // проверка работает, бд пустая
                 //int k = 0;
@@ -120,5 +129,6 @@ namespace MajicalSurvey.UI
 
             }
         }
+
     }
 }
