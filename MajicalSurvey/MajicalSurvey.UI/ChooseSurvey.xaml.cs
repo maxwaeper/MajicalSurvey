@@ -41,7 +41,7 @@ namespace MajicalSurvey.UI
             }
         }
 
-        public Surveys ButtonProceed_Click(object sender, RoutedEventArgs e)
+        public void ButtonProceed_Click(object sender, RoutedEventArgs e)
         {
 
             s = sr.GetSurveyByName(survey_listview.SelectedItem.ToString());
@@ -50,7 +50,6 @@ namespace MajicalSurvey.UI
             Pass_survey next = new Pass_survey();
             next.ShowDialog();
             //ButtonProceed.IsCancel = true;
-            return s;
         }
     }
 }

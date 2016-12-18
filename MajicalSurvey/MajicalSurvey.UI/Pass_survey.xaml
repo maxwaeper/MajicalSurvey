@@ -20,6 +20,8 @@
 
         <TextBlock Name="surveyName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
                    FontSize="19" Background="Azure"/>
+        <TextBlock Name="Counter" Grid.Row="0" Grid.Column="1" Width="400" Height="80" TextWrapping="Wrap" HorizontalAlignment="Right"
+                   Margin="40"/>
 
         <TextBlock Name="Number" Grid.Row="1" Grid.Column="0" Width="20" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
                    Text="10" VerticalAlignment="Center"  Background="AliceBlue"/>
@@ -32,7 +34,7 @@
 
         </StackPanel>
 
-        <Button Name="previous" Content="Previous" Grid.Row="3" Grid.Column="0" Width="70" Height="70" HorizontalAlignment="Center" />
+        <Button Name="previous" Content="Previous" Grid.Row="3" Grid.Column="0" Width="70" Height="70" HorizontalAlignment="Center" Click="previous_Click" />
         <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked"/>
 
 
