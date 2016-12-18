@@ -50,114 +50,121 @@ namespace MajicalSurvey.UI
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
-            MethodsForStatistics methods = new MethodsForStatistics();
-            OverallData.Visibility = Visibility.Visible;
-            var surveysList = surveyRepo.GetAllSurveys();
-
-            if (ComboBox.SelectedItem == all)
- 
+            try
             {
-                data_one.Visibility = Visibility.Hidden;
-                data_all.Visibility = Visibility.Visible;
-                first.Text = "The number of surveys:";
-                second.Text = "The number of unique users:";
+                MethodsForStatistics methods = new MethodsForStatistics();
+                OverallData.Visibility = Visibility.Visible;
+                var surveysList = surveyRepo.GetAllSurveys();
 
-                first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
-                second_n.Text = usersRepo.GetAllUsers().Count().ToString();
+                if (ComboBox.SelectedItem == all)
 
-
-                List<ShowResultsInDG> print = new List<ShowResultsInDG>();
-
-                foreach (var survey in surveysList)
                 {
-                    print.Add(new ShowResultsInDG
+                    data_one.Visibility = Visibility.Hidden;
+                    data_all.Visibility = Visibility.Visible;
+                    first.Text = "The number of surveys:";
+                    second.Text = "The number of unique users:";
+
+                    first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
+                    second_n.Text = usersRepo.GetAllUsers().Count().ToString();
+
+
+                    List<ShowResultsInDG> print = new List<ShowResultsInDG>();
+
+                    foreach (var survey in surveysList)
                     {
-                        Count =survey.Id,
-                        Name =survey.Name,
-                        Users = methods.UsersOfSurvey(survey.Name).Count()
-                    });
-                    
-                }
-                data_all.ItemsSource = print;
-
-
-               
-            }
-
-            if (ComboBox.SelectedItem == one)
-
-            {
-                data_all.Visibility = Visibility.Hidden;
-                data_one.Visibility = Visibility.Visible;
-                
-
-                data_one.Visibility = Visibility.Visible;
-
-                first.Text = "Survey's name:";
-                second.Text = "The number of its questions:";
-                third.Text = "The number of people who have answered the survey:";
-
-                try
-                {
-                    first_n.Text = Survey_choice.SelectedItem.ToString();
-                }
-                catch (NullReferenceException)
-                {
-
-                    MessageBox.Show("You haven't chosen any survey");
-                    return;
-                }
-
-                second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
-                third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
-                List <Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
-                List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
-
-                foreach (var question in questionslist)
-                {
-                    int questionID = questionRepo.GetQuestionByName(question.Name);
-                    List<Answers> answers = answersRepo.GetAllAnswers().Where(x => x.Question.Id == question.Id).ToList();
-               
-
-                    foreach (var answer in answers)
-                    {
-                        int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
-                        float usersnum = methods.GetUserssByAnswersId(answersID).Count();
-                        float propor = 0;
-
-                        try
+                        print.Add(new ShowResultsInDG
                         {
-                             propor = usersnum / methods.ListForProportion(questionID).Count();
-                        }
-                        catch (DivideByZeroException)
-                        {
-
-                            propor = 0;
-                        }
-
-                      
-
-                        string percent = (propor * 100).ToString() + "%";
-                        print.Add(new ShowResultsForOneInDG
-                        {
-                            Question = question.Name,
-                            Answers = answer.RadioButtonName,
-                            Chosen = usersnum,
-                            Proportion = propor,
-                            Percentage = percent
+                            Count = survey.Id,
+                            Name = survey.Name,
+                            Users = methods.UsersOfSurvey(survey.Name).Count()
                         });
-                       
+
                     }
-                 
+                    data_all.ItemsSource = print;
+
+
+
                 }
 
-                data_one.ItemsSource = print;
+                if (ComboBox.SelectedItem == one)
 
-               
+                {
+                    data_all.Visibility = Visibility.Hidden;
+                    data_one.Visibility = Visibility.Visible;
 
+
+                    data_one.Visibility = Visibility.Visible;
+
+                    first.Text = "Survey's name:";
+                    second.Text = "The number of its questions:";
+                    third.Text = "The number of people who have answered the survey:";
+
+                    try
+                    {
+                        first_n.Text = Survey_choice.SelectedItem.ToString();
+                    }
+                    catch (NullReferenceException)
+                    {
+
+                        MessageBox.Show("You haven't chosen any survey");
+                        return;
+                    }
+
+                    second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
+                    third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
+                    List<Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
+                    List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
+
+                    foreach (var question in questionslist)
+                    {
+                        int questionID = questionRepo.GetQuestionByName(question.Name);
+                        List<Answers> answers = answersRepo.GetAllAnswers().Where(x => x.Question.Id == question.Id).ToList();
+
+
+                        foreach (var answer in answers)
+                        {
+                            int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
+                            float usersnum = methods.GetUserssByAnswersId(answersID).Count();
+                            float propor = 0;
+
+                            try
+                            {
+                                propor = usersnum / methods.ListForProportion(questionID).Count();
+                            }
+                            catch (DivideByZeroException)
+                            {
+
+                                propor = 0;
+                            }
+
+
+
+                            string percent = (propor * 100).ToString() + "%";
+                            print.Add(new ShowResultsForOneInDG
+                            {
+                                Question = question.Name,
+                                Answers = answer.RadioButtonName,
+                                Chosen = usersnum,
+                                Proportion = propor,
+                                Percentage = percent
+                            });
+
+                        }
+
+                    }
+
+                    data_one.ItemsSource = print;
+
+
+
+                }
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show("Sorry this part is still under development");
+            }
         }
+
 
         private void all_Selected(object sender, RoutedEventArgs e)
         {
