@@ -30,7 +30,6 @@ namespace MajicalSurvey.UI
         IUsersRepository ur;
         public Surveys S { get; set; }
         public List<Questions> list_question { get; set; } = new List<Questions>();
-        public List<Answers> list_answer { get; set; } = new List<Answers>();
         public List<Answers> user_list_answer { get; set; } = new List<Answers>();
         public List<RadioButton> list_radio { get; set; } = new List<RadioButton>();
 
@@ -63,6 +62,7 @@ namespace MajicalSurvey.UI
         }
         public void New_question()
         {
+            List<Answers> list_answer = new List<Answers>();
 
             var survey = S; // это выбранный пользователем опрсник
             surveyName.Text = survey.Name; // Название опросника
@@ -72,7 +72,7 @@ namespace MajicalSurvey.UI
 
             questionName.Text = (list_question[k]).Name; // Название вопроса
 
-            list_answer = ar.GetAllAnswers((list_question[k]).Id)
+            list_answer = ar.GetAllAnswers()
                 .Where(x=>x.Question.Name == list_question[k].Name).ToList(); // Присваивание ответов
 
             for (int i = 0; i < list_answer.Count; i++) // Название ответов
@@ -80,13 +80,12 @@ namespace MajicalSurvey.UI
                 list_radio[i].Content = list_answer[i].RadioButtonName;
             }
 
-            Counter.Text = string.Format("It is {0} question from {1}", k, list_question.Count);
+            Counter.Text = string.Format("{0} out of {1}", k+1, list_question.Count);
 
             if (k + 1 == list_question.Count)
             {
                 next.Visibility = Visibility.Collapsed;
                 Complete.Visibility = Visibility.Visible;
-
             }
 
         }
@@ -101,19 +100,19 @@ namespace MajicalSurvey.UI
 
         private void Complete_Clicked(object sender, RoutedEventArgs e)
         {
-        //    //отправка данных в бд
+            //отправка данных в бд
 
-        //    foreach (Answers a in list_answer) ar.Insert(a);
+            //foreach (Answers a in user_list_answer) ar.Insert(a);
 
-        //    ChooseSurvey c = new ChooseSurvey();
-        //    var user = c.u; // создание пользователя
-        //    user.Answers = list_answer;
-        //    ur.Insert(user);
+            //ChooseSurvey c = new ChooseSurvey();
+            //var user = c.u; // создание пользователя
+            //user.Answers = list_answer;
+            //ur.Insert(user);
 
-        //    ur.Save();
+            //ur.Save();
 
-        //    MessageBox.Show("Survey is passed", "Well done!");
-        //    Close();
+            //MessageBox.Show("Survey is passed", "Well done!");
+            Close();
         }
 
         public void Save_answer()
