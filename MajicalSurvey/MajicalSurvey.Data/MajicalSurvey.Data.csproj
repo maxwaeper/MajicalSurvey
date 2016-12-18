@@ -49,8 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridViewAllSurveys.cs" />
     <Compile Include="Entities\Users.cs" />
-    <Compile Include="IRepositoties\IUsersRepository.cs" />
+    <Compile Include="IRepositories\IUsersRepository.cs" />
     <Compile Include="MethodsForStatistics.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.cs" />
     <Compile Include="Migrations\201612091829178_MinorChanges.Designer.cs">
@@ -87,10 +88,10 @@
     <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Entities\Answers.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="IRepositoties\IAnswerRepository.cs" />
-    <Compile Include="IRepositoties\IQuestionRepository.cs" />
-    <Compile Include="IRepositoties\IRepository.cs" />
-    <Compile Include="IRepositoties\ISurveyRepository.cs" />
+    <Compile Include="IRepositories\IAnswerRepository.cs" />
+    <Compile Include="IRepositories\IQuestionRepository.cs" />
+    <Compile Include="IRepositories\IRepository.cs" />
+    <Compile Include="IRepositories\ISurveyRepository.cs" />
     <Compile Include="Migrations\201612061845084_Initialize.cs" />
     <Compile Include="Migrations\201612061845084_Initialize.Designer.cs">
       <DependentUpon>201612061845084_Initialize.cs</DependentUpon>

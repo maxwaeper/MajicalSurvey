@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MajicalSurvey.Data.IRepositoties
+namespace MajicalSurvey.Data.IRepositories
 {
-    public interface IUsersRepository
+    public interface IUsersRepository : IRepository<Users>
     {
         //List<Users> GetUsersAnswers(int answersId);
         List<Users> GetAllUsers();

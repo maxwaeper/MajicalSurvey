@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4">
+                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4" MouseDoubleClick="listView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="50"/>
@@ -57,7 +57,7 @@
         
         <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
             <RadioButton Content="Radiobuttons" Name="Radiobuttons" Margin="5" Checked="Radiobuttons_Checked"/>
-            <RadioButton Content="Cheakboxes" Name="Cheakboxes" Margin="5" Checked="Current_version_exeption"/>
+            <RadioButton Content="Checkboxes" Name="Checkboxes" Margin="5" Checked="Current_version_exeption"/>
             <RadioButton Content="String" Name="String" Margin="5" Checked="Current_version_exeption"/>
             <RadioButton Content="Number" Name="Number" Margin="5" Checked="Current_version_exeption"/>
         </StackPanel>
