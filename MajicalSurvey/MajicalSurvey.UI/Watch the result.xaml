@@ -49,7 +49,7 @@
             <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" VerticalAlignment="Center"
                        HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
-            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Name="second_n" Grid.Column="1" Grid.Row="1" Width="50" VerticalAlignment="Center" />
             <TextBlock Name="third_n" Grid.Column="1" Grid.Row="2" Width="50" VerticalAlignment="Center"/>
         </Grid>

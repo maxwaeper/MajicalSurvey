@@ -61,20 +61,20 @@ namespace MajicalSurvey.UI
                 data_all.Visibility = Visibility.Visible;
                 first.Text = "The number of surveys:";
                 second.Text = "The number of unique users:";
-                third.Text = "The avarege number of surveys for a user:";
+               // third.Text = "The avarege number of surveys for a user:";
 
                 first_n.Text = surveyRepo.GetAllSurveys().Count().ToString();
                 second_n.Text = usersRepo.GetAllUsers().Count().ToString();
 
-                try
-                {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() % usersRepo.GetAllUsers().Count()).ToString();
-                }
-                catch (DivideByZeroException)
-                {
+                //try
+                //{
+                //     third_n.Text = (surveyRepo.GetAllSurveys().Count() % usersRepo.GetAllUsers().Count()).ToString();
+                //}
+                //catch (DivideByZeroException)
+                //{
 
-                    third_n.Text = "0";
-                }
+                //    third_n.Text = "0";
+                //}
 
                 List<ShowResultsInDG> print = new List<ShowResultsInDG>();
 
@@ -98,7 +98,7 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
-               
+                data_one.Visibility = Visibility.Visible;
                 // проверка работает, бд пустая
                 //int k = 0;
 
@@ -146,8 +146,21 @@ namespace MajicalSurvey.UI
                     foreach (var answer in answers)
                     {
                         int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
-                        int usersnum = methods.GetUserssByAnswersId(answersID).Count();
-                        int propor = usersnum/methods.ListForProportion(questionID).Count();
+                        float usersnum = methods.GetUserssByAnswersId(answersID).Count();
+                        float propor = 0;
+
+                        try
+                        {
+                             propor = usersnum / methods.ListForProportion(questionID).Count();
+                        }
+                        catch (DivideByZeroException)
+                        {
+
+                            propor = 0;
+                        }
+
+                      
+
                         string percent = (propor * 100).ToString() + "%";
                         print.Add(new ShowResultsForOneInDG
                         {

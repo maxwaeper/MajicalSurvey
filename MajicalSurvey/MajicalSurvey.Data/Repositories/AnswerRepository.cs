@@ -28,6 +28,7 @@ namespace MajicalSurvey.Data
         {
             return GetAllElements().ToList();
         }
+
         public int GetAnswersByName(string name)
         //по вопросу возвращает его айди
         {
