@@ -24,25 +24,31 @@ namespace MajicalSurvey.UI
     public partial class Pass_survey : Window
     {
 
-        List<Questions> list_question = new List<Questions>();
-        AnswerRepository ar = new AnswerRepository();
-        UsersRepository ur = new UsersRepository();
+        
+        IAnswerRepository ar;
+        IQuestionRepository qr;
+        IUsersRepository ur;
         public Surveys S { get; set; }
+        public List<Questions> list_question { get; set; } = new List<Questions>();
+        public List<Answers> list_answer { get; set; } = new List<Answers>();
+        public List<Answers> user_list_answer { get; set; } = new List<Answers>();
+        public List<RadioButton> list_radio { get; set; } = new List<RadioButton>();
 
-        List<Answers> list_answer = new List<Answers>();
-        List<Answers> user_list_answer = new List<Answers>();
-        List<RadioButton> list_radio = new List<RadioButton>();
-
-        int k = 0;
+        public int k { get; set; }
 
         public Pass_survey(Surveys s)
         {
             InitializeComponent();
+            ar = new AnswerRepository();
+            ur = new UsersRepository();
+            qr = new QuestionRepository();
             foreach (RadioButton r in answer_stackpanel.Children)
             {
                 list_radio.Add(r);
             }
             S = s;
+
+            New_question();
         }
 
         private void Next_Clicked(object sender, RoutedEventArgs e)
@@ -61,17 +67,17 @@ namespace MajicalSurvey.UI
             var survey = S; // это выбранный пользователем опрсник
             surveyName.Text = survey.Name; // Название опросника
 
-            list_question = survey.Questions; // Присваивание вопросов
+            list_question = qr.GetAllQuestions(S.Name); // Присваивание вопросов
             Number.Text = k.ToString();
 
             questionName.Text = (list_question[k]).Name; // Название вопроса
 
-            list_answer = ar.GetAllAnswers((list_question[k]).Id); // Присваивание ответов
+            list_answer = ar.GetAllAnswers((list_question[k]).Id)
+                .Where(x=>x.Question.Name == list_question[k].Name).ToList(); // Присваивание ответов
 
             for (int i = 0; i < list_answer.Count; i++) // Название ответов
             {
-                list_radio[i].Visibility = Visibility.Visible;
-                list_radio[i].Content = list_answer[i];
+                list_radio[i].Content = list_answer[i].RadioButtonName;
             }
 
             Counter.Text = string.Format("It is {0} question from {1}", k, list_question.Count);
