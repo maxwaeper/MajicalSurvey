@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MajicalSurvey.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,8 +13,9 @@ namespace MajicalSurvey.Data
         public DbSet<Surveys> Surveys { get; set; }
         public DbSet<Questions> Questions { get; set;}
         public DbSet<Answers> Answers { get; set; }
+        public DbSet<Users> Users { get; set; }
 
-        public Context():base("MajicalSurvey")
+        public Context():base("localSql")
         {
 
         }

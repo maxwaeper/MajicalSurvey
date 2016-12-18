@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="1000" Width="1000" FontSize="20" WindowState="Maximized" Background="LemonChiffon">
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="pass_survey" Content="Pass a survey" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Height="150"  
+                VerticalAlignment="Center" Width="300" Click="pass_survey_Clicked" Background="Wheat"/>
+        <Button x:Name="create_survey" Grid.Column="0" Grid.Row="0" Content="Create new survey" HorizontalAlignment="Center" 
+                Height="150"  VerticalAlignment="Center" Width="300" Click="create_survey_Clicked" Background="Bisque"/>
+        <Button Grid.Row="1" x:Name="statistic" Content="Show statistic" HorizontalAlignment="Center" 
+                Height="150" VerticalAlignment="Center" Width="300" Click="statistic_Clicked" Grid.ColumnSpan="2" Background="Tan"/>
+
     </Grid>
 </Window>

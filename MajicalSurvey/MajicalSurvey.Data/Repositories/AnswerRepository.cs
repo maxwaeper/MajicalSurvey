@@ -1,23 +1,39 @@
-﻿using System;
+﻿using MajicalSurvey.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace MajicalSurvey.Data
 {
     public class AnswerRepository : Repository<Answers>, IAnswerRepository
     {
-        public List<Answers> GetAllAnswers(int questionId)
+        private Context _context;
+
+        public AnswerRepository()
         {
-            return GetAllElements().Where(x => x.Question.Id == questionId).ToList();
+            _context = new Context();
         }
 
-        public void ScoreIncrement(string name)
+        public List<Answers> GetAllAnswers()//delete questionId cause os uselessnes
+            //по номеру вопроса возвращает список вариантов ответов
         {
-            var score = GetCertainElement(x => x.Name == name);
-            score.Score++;
-            Save();
+            return _context.Answers.Include(x => x.Question).ToList();
         }
+
+      public List<Answers> GetAnswers()
+            //возвращает все варианты ответов для всех опросников
+        {
+            return GetAllElements().ToList();
+        }
+
+        public int GetAnswersByName(string name)
+        //по вопросу возвращает его айди
+        {
+            return GetCertainElement(x => x.RadioButtonName == name).Id;
+        }
+
     }
 }

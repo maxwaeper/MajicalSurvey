@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -30,12 +31,14 @@ namespace MajicalSurvey.Data
 
         public virtual void Insert(T entity)
         {
-            _context.Set<T>().Add(entity);
+            _context.Set<T>().AddOrUpdate(entity);
         }
 
-        public virtual void Delete(Expression<Func<T, bool>> predicate)
+        public virtual void Delete(int id)
         {
-            var entity = _context.Set<T>().Find(predicate);
+            var entity = _context.Set<T>().Find(id);
+            if (entity != null)
+                _context.Set<T>().Remove(entity);
         }
 
         public void Save()

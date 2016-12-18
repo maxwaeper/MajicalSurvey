@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace MajicalSurvey.Data
 {
-    public interface IQuestionRepository
+    public class ShowResultsInDG
     {
-        List<Questions> GetAllQuestions(int surveyId);
+        public int Count { get; set; }
+        public string Name { get; set; }
+        public int Users { get; set; }
 
-        Questions GetQuestionByName(string name);
     }
 }

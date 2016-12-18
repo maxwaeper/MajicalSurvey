@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using MajicalSurvey.Data.Entities;
 
 namespace MajicalSurvey.Data
 {
     public class QuestionRepository : Repository<Questions>, IQuestionRepository
     {
-        public List<Questions> GetAllQuestions(int surveyId)
+        private Context _context;
+
+        public QuestionRepository()
         {
-            return GetAllElements().Where(x=>x.Survey.Id==surveyId).ToList();
+            _context = new Context();
         }
 
-        public Questions GetQuestionByName(string name)
+        public List<Questions> GetAllQuestions(string name)
+            //по названию опросника возвращает список вопросов
         {
-            return GetCertainElement(x => x.Name == name);
+            return _context.Questions.Include(x => x.Survey).Where(y=>y.Survey.Name==name).ToList();
         }
+
+        public int GetQuestionByName(string name)
+            //по вопросу возвращает его айди
+        {
+            return GetCertainElement(x => x.Name == name).Id;
+        }
+
+
 
         
     }

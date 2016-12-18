@@ -9,6 +9,7 @@ namespace MajicalSurvey.Data
     public class SurveyRepository : Repository<Surveys>, ISurveyRepository
     {
         public List<Surveys> GetAllSurveys()
+            //возвращает список всех опросников
         {
             return GetAllElements().ToList();
         }
@@ -17,5 +18,7 @@ namespace MajicalSurvey.Data
         {
             return GetCertainElement(x => x.Name == name);
         }
+
+      
     }
 }

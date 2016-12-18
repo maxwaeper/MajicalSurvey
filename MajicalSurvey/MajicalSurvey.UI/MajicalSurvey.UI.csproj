@@ -64,6 +64,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChooseSurvey.xaml.cs">
+      <DependentUpon>ChooseSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Create_survey.xaml.cs">
+      <DependentUpon>Create_survey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pass_survey.xaml.cs">
+      <DependentUpon>Pass_survey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Watch the result.xaml.cs">
+      <DependentUpon>Watch the result.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ChooseSurvey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Create_survey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +96,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pass_survey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Watch the result.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -104,6 +132,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MajicalSurvey.Data\MajicalSurvey.Data.csproj">
+      <Project>{f103c3b3-1161-44b5-baa4-d0fa50a3d48c}</Project>
+      <Name>MajicalSurvey.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\pattern.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\tree.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\stars.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
