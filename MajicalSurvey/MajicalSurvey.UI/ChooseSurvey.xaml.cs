@@ -53,5 +53,10 @@ namespace MajicalSurvey.UI
             Pass_survey next = new Pass_survey(s,userName);
             next.ShowDialog();
         }
+
+        private void Cancel_Clicked(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
