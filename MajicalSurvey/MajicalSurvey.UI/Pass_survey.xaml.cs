@@ -61,5 +61,10 @@ namespace MajicalSurvey.UI
             foreach (RadioButton r in answer_stackpanel.Children) r.IsChecked = false;
 
         }
+
+        private void previous_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
