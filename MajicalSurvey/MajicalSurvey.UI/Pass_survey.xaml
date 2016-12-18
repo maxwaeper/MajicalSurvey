@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Name="surveyName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Height="100" HorizontalAlignment="Left" Margin="80 0 0 0" 
-                   FontSize="19" Background="Azure"/>
+                   FontSize="19"/>
         <TextBlock Name="Counter" Grid.Row="0" Grid.Column="1" Width="400" Height="80" TextWrapping="Wrap" HorizontalAlignment="Right"
                    Margin="40"/>
 
@@ -29,8 +29,16 @@
                    HorizontalAlignment="Left" Margin="100 0 0 0" Background="Aqua" TextWrapping="Wrap"/>
 
         <StackPanel Name="answer_stackpanel" Grid.Row="2" Grid.Column="0" Margin="80 0 0 0">
-            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Green"/>
-            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5" Background="Red"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightGreen"/>
+            <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral"/>
 
         </StackPanel>
 
