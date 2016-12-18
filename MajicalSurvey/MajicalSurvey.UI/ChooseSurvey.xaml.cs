@@ -50,6 +50,14 @@ namespace MajicalSurvey.UI
                 return;
             }
             var userName = TextBoxEnterName.Text;
+
+            if(string.IsNullOrWhiteSpace(userName))
+            {
+                MessageBox.Show("Name yourself, please", "Oops");
+                return;
+                    
+            }
+
             Pass_survey next = new Pass_survey(s,userName);
             next.ShowDialog();
         }

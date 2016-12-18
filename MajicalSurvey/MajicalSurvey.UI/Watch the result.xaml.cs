@@ -58,6 +58,7 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == all)
             //do methods for all
             {
+                data_one.Visibility = Visibility.Hidden;
                 data_all.Visibility = Visibility.Visible;
                 first.Text = "The number of surveys:";
                 second.Text = "The number of unique users:";
@@ -98,6 +99,7 @@ namespace MajicalSurvey.UI
             if (ComboBox.SelectedItem == one)
             //do methods for one
             {
+                data_all.Visibility = Visibility.Hidden;
                 data_one.Visibility = Visibility.Visible;
                 // проверка работает, бд пустая
                 //int k = 0;
