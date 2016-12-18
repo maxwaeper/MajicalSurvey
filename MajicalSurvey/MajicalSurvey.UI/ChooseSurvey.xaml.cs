@@ -38,11 +38,20 @@ namespace MajicalSurvey.UI
         {
             Surveys s = new Surveys();
             var survey = survey_listview.SelectedItem as Surveys;
-            s = surveyRepo.GetSurveyByName(survey.Name);
+            try
+            {
+                s = surveyRepo.GetSurveyByName(survey.Name);
+
+            }
+            catch (NullReferenceException)
+            {
+
+                MessageBox.Show("You haven't chosen any survey","Oops");
+                return;
+            }
             
             Pass_survey next = new Pass_survey(s);
             next.ShowDialog();
-            //ButtonProceed.IsCancel = true;
         }
     }
 }
