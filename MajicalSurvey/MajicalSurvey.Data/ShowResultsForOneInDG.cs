@@ -9,9 +9,9 @@ namespace MajicalSurvey.Data
     public class ShowResultsForOneInDG
     {
         public string Question { get; set; }
-        public List<string> Answers { get; set; }
-        public List<int> Chosen { get; set; }
-        public List<int> Proportion { get; set; }
-        public List<string> Persentage { get; set; }
+        public string Answers { get; set; }
+        public int Chosen { get; set; }
+        public int Proportion { get; set; }
+        public string Persentage { get; set; }
     }
 }

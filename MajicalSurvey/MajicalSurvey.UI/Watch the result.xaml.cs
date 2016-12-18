@@ -68,7 +68,7 @@ namespace MajicalSurvey.UI
 
                 try
                 {
-                     third_n.Text = (surveyRepo.GetAllSurveys().Count() / usersRepo.GetAllUsers().Count()).ToString();
+                     third_n.Text = (surveyRepo.GetAllSurveys().Count() % usersRepo.GetAllUsers().Count()).ToString();
                 }
                 catch (DivideByZeroException)
                 {
@@ -133,44 +133,36 @@ namespace MajicalSurvey.UI
                 second_n.Text = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString()).Count().ToString();
                 third_n.Text = methods.UsersOfSurvey(Survey_choice.SelectedItem.ToString()).Count().ToString();
 
-
-                List<Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
+                //var survey = Survey_choice.SelectedItem as Surveys;
+                List <Questions> questionslist = questionRepo.GetAllQuestions(Survey_choice.SelectedItem.ToString());
                 List<ShowResultsForOneInDG> print = new List<ShowResultsForOneInDG>();
 
                 foreach (var question in questionslist)
                 {
                     int questionID = questionRepo.GetQuestionByName(question.Name);
-                    List<Answers> answers = answersRepo.GetAllAnswers(questionID);
-                    List<string> ans = new List<string>();
-                    foreach (var answer in answers)
-                    {
-                        ans.Add(answer.RadioButtonName);
-                    }
-                    List<int> numberofusers = new List<int>();
-                    List<int> proportion = new List<int>();
-                    List<String> percentage = new List<string>();
+                    List<Answers> answers = answersRepo.GetAllAnswers().Where(x => x.Question.Id == question.Id).ToList();
+               
+
                     foreach (var answer in answers)
                     {
                         int answersID = answersRepo.GetAnswersByName(answer.RadioButtonName);
                         int usersnum = methods.GetUserssByAnswersId(answersID).Count();
                         int propor = usersnum/methods.ListForProportion(questionID).Count();
                         string percent = (propor * 100).ToString() + "%";
-                        numberofusers.Add(usersnum);
-                        proportion.Add(propor);
-                        percentage.Add(percent);
+                        print.Add(new ShowResultsForOneInDG
+                        {
+                            Question = question.Name,
+                            Answers = answer.RadioButtonName,
+                            Chosen = usersnum,
+                            Proportion = propor,
+                            Persentage = percent
+                        });
+                       
                     }
-                    print.Add(new ShowResultsForOneInDG
-                    {
-                        Question = question.Name,
-                        Answers = ans,
-                        Chosen = numberofusers,
-                        Proportion = proportion,
-                        Persentage = percentage
-                    });
-                    
+                 
                 }
-                data_all.ItemsSource = print;
 
+                data_one.ItemsSource = print;
 
                 //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
                 //---доля в отношении ко всем вариантам ответа ---%

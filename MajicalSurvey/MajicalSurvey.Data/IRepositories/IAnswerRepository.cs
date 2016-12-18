@@ -8,7 +8,7 @@ namespace MajicalSurvey.Data
 {
     public interface IAnswerRepository : IRepository<Answers>
     {
-        List<Answers> GetAllAnswers(int questionId);
+        List<Answers> GetAllAnswers();
 
         List<Answers> GetAnswers();
         int GetAnswersByName(string name);

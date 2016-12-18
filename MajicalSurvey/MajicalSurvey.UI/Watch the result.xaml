@@ -75,13 +75,13 @@
         
          <DataGrid Name="data_one" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True" 
                   HorizontalContentAlignment="Center">
-            <DataGrid.Columns>
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="Question" Width="100"/>
                 <DataGridTextColumn Header="Possible answers" Width="200"/>
                 <DataGridTextColumn Header="Number of given answers" Width="200"/>
                 <DataGridTextColumn Header="Proportion" Width="100"/>
                 <DataGridTextColumn Header="%" Width="100"/>
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
         </DataGrid>
     </Grid>
 

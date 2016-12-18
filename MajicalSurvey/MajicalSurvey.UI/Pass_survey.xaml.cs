@@ -29,7 +29,7 @@ namespace MajicalSurvey.UI
         List<Answers> list_answer = new List<Answers>();
         List<RadioButton> list_radio = new List<RadioButton>();
         IQuestionRepository questionRepo;
-
+        public int k { get; set; }
         public Pass_survey(Surveys s)
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace MajicalSurvey.UI
 
             questionName.Text = (list_question[0]).Name;
 
-            list_answer = ar.GetAllAnswers((list_question[0]).Id);
+            list_answer = ar.GetAllAnswers().Where(x => x.Question.Name == list_question[k].Name).ToList();
 
             for (int i = 0; i < list_answer.Count; i++)
             {
