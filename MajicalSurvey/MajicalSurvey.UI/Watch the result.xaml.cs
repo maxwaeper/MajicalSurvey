@@ -53,10 +53,9 @@ namespace MajicalSurvey.UI
             MethodsForStatistics methods = new MethodsForStatistics();
             OverallData.Visibility = Visibility.Visible;
             var surveysList = surveyRepo.GetAllSurveys();
-            //nameTheType.Text = "Choose the type of statistics"; 
-            //Choose.P = "Choose the type of statistics";
+
             if (ComboBox.SelectedItem == all)
-            //do methods for all
+ 
             {
                 data_one.Visibility = Visibility.Hidden;
                 data_all.Visibility = Visibility.Visible;
@@ -92,28 +91,15 @@ namespace MajicalSurvey.UI
                 data_all.ItemsSource = print;
 
 
-                //+подробнее в табличке в DataGrid в виде: Survey_Name ---- Users namber
-                //сортировка по популярности
+               
             }
 
             if (ComboBox.SelectedItem == one)
-            //do methods for one
+
             {
                 data_all.Visibility = Visibility.Hidden;
                 data_one.Visibility = Visibility.Visible;
-                // проверка работает, бд пустая
-                //int k = 0;
-
-                //foreach (Surveys s in surveyRepo.GetAllSurveys())
-                //{
-                //    if (s.Name == TextBoxForSurveyName.Text) k++;
-                //}
-
-                //if (k != 1)
-                //{
-                //    MessageBox.Show("There are no survey with such name", "Something is missed");
-                //    return;
-                //}
+                
 
                 data_one.Visibility = Visibility.Visible;
 
@@ -179,9 +165,7 @@ namespace MajicalSurvey.UI
 
                 data_one.ItemsSource = print;
 
-                //+подробнее в табличк в DataGrid в виде: Вопрос---варианты ответов --- кол-во ответивших на данный вариант ответа
-                //---доля в отношении ко всем вариантам ответа ---%
-                //(?) самые популярные варианты ответов среди пользователей
+               
 
             }
 

@@ -5,11 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Create new survey" Height="800" Width="900" WindowState="Maximized" FontSize="17" FontFamily="Aria" Background="LemonChiffon">
+        Title="Create new survey" Height="800" Width="1500" WindowState="Maximized" FontSize="17" FontFamily="Aria" Background="LemonChiffon">
 
-    <!--<Window.Background>
-        <ImageBrush ImageSource="Pictures/tree.jpg"/>
-    </Window.Background>-->
     <Grid Height="769" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -21,14 +18,21 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="450" Margin="-69,167,15,0" MouseDoubleClick="listView_MouseDoubleClick">
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
+                  VerticalAlignment="Center" Width="450"  MouseDoubleClick="listView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="430"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Name="survey_textblock" Text="Name your survey" Height="30" Width="200" 
+                   HorizontalAlignment="Right" Margin="40"
+                       VerticalAlignment="Top" FontSize="19" TextWrapping="Wrap"/>
+        <TextBox Grid.Row="0"  Grid.Column="1" Name="Survey_name" Margin="40"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="350" 
+                     VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="19" FontStyle="Italic"/>
 
         <Grid Grid.Column="1" Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -39,13 +43,6 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-
-
-            <TextBlock Grid.Column="0" Grid.Row="0" Name="survey_textblock" Text="Name your survey" Height="30" Width="200" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontSize="19" TextWrapping="Wrap" Margin="-422,49,445,24"/>
-            <TextBox Grid.Row="0" Name="Survey_name" 
-                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="350" 
-                     VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" FontStyle="Italic" Margin="-241,49,114,24"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Put a name of the question"
                Height="30" VerticalAlignment="Center"/>
@@ -110,14 +107,14 @@
 
 
         <Button Grid.Column="0" Grid.Row="2" Content="Save changes" x:Name="ButtonSaveChanges"  Width="120" Height="50" Click="Save_Changes_Clicked"
-                HorizontalAlignment="Right" Margin="0 50 15 0" IsEnabled="False" Background="Wheat"/>
+                HorizontalAlignment="Right" Margin="0 -50 65 0" IsEnabled="False" Background="Wheat"/>
 
         <Button Grid.Column="0" Grid.Row="2" Content="Add" Name="Add" Width="70" Height="50" Click="Add_Clicked" Background="Tan"
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 40" />
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 100 100" />
         <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Width="70" Height="50" Click="Delete_Clicked"  Margin="40" Background="Wheat"/>
+                Width="70" Height="50" Click="Delete_Clicked"  Margin="100" Background="Wheat"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 
-              VerticalAlignment="Bottom"  Margin="40" Click="Finish_Clicked" Background="Tan"/>
+              VerticalAlignment="Bottom"  Margin="100" Click="Finish_Clicked" Background="Tan"/>
 
 
     </Grid>

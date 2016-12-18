@@ -5,10 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Watch the result" Height="1000" Width="1000" WindowState="Maximized" FontSize="17" Background="LemonChiffon">
-    <!--<Window.Background>
-        <ImageBrush ImageSource="Pictures/stars.jpg"/>
-    </Window.Background>-->
+        Title="Watch the result" Height="1000" Width="1200" WindowState="Maximized" FontSize="17" Background="LemonChiffon">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,26 +14,29 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="Choose" Margin="60 60 0 60">Choose the type of statistics</Label>
+        <Label x:Name="Choose" Margin="60 40 0 40" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top">Choose the type of statistics</Label>
+        <Label Content="Choose a particular survey" Margin="60 40 0 40" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top"/>
         <ComboBox  Name="ComboBox" Grid.Column="0" Grid.Row="0" Width="400" Height="50" HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="60 50 0 0" d:LayoutOverrides="Width, LeftMargin, RightMargin">
             <ComboBoxItem Name ="all" Content="Statistics for all surveys" Selected="all_Selected" ></ComboBoxItem>
             <ComboBoxItem Name ="one" Content="Statistics for a particular survey" Selected="one_Selected"></ComboBoxItem>
         </ComboBox>
-        <ComboBox Name="Survey_choice" Grid.Column="1" Grid.Row="0" Width="400" Height="50" Margin="50 50 0 0" HorizontalContentAlignment="Center" IsHitTestVisible="True" Text="Choose survey"/>
+        <ComboBox Name="Survey_choice" Grid.Column="1" Grid.Row="0" Width="400" Height="50" Margin="50 50 0 0"
+                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
 
-        <Button Grid.Column="2" Grid.Row="0" Content="Show" Width="200" Height="50" Click="Show_button_Clicked" Margin="60 50 0 0" Background="Tan"/>
+        <Button Grid.Column="2" Grid.Row="0" Content="Show" Width="200" Height="50" Click="Show_button_Clicked" Margin="60 50 0 0"
+                Background="Tan"/>
 
-        <Grid  Name="OverallData" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Width="500" Height="200" Visibility="Visible">
+        <Grid  Name="OverallData" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Width="500" Height="200" Margin="60" Visibility="Visible">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.75*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -43,45 +44,25 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Name="first" Grid.Column="0" Grid.Row="0" Width="300"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-            <TextBlock Name="second" Grid.Column="0" Grid.Row="1" Width="300" TextWrapping="Wrap" 
+            <TextBlock Name="first" Grid.Column="0" Grid.Row="0" Width="200"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Name="second" Grid.Column="0" Grid.Row="1" Width="200" TextWrapping="Wrap" 
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" VerticalAlignment="Center"
+            <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="200" VerticalAlignment="Center"
                        HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
-            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="150" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap"/>
             <TextBlock Name="second_n" Grid.Column="1" Grid.Row="1" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Name="third_n" Grid.Column="1" Grid.Row="2" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
 
+        <DataGrid Name="data_all" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden"
+                  AutoGenerateColumns="True" Width="650" Height="500" Margin="0 60 -70 60">
 
-        <!--<ListView Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="listview_all" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="350" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="25"/>
-                    <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="300"/>
-                </GridView>
-            </ListView.View>
-        </ListView>-->
-        
-        <DataGrid Name="data_all" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True">
-            <!--<DataGrid.Columns>-->
-                <!--<DataGridTextColumn x:Name="data_allColumn1" Header="Survey №" Width="100"/>
-                <DataGridTextColumn x:Name="data_allColumn2" Header="Name" Width="200"/>
-                <DataGridTextColumn x:Name="data_allColumn3" Header="Number of users" Width="200"/>-->
-            <!--</DataGrid.Columns>-->
         </DataGrid>
         
          <DataGrid Name="data_one" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True" 
-                  HorizontalContentAlignment="Center">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Header="Question" Width="100"/>
-                <DataGridTextColumn Header="Possible answers" Width="200"/>
-                <DataGridTextColumn Header="Number of given answers" Width="200"/>
-                <DataGridTextColumn Header="Proportion" Width="100"/>
-                <DataGridTextColumn Header="%" Width="100"/>
-            </DataGrid.Columns>-->
+                  HorizontalContentAlignment="Center" Margin="0 60 -70 60"  Width="650" Height="500">
+
         </DataGrid>
     </Grid>
 
