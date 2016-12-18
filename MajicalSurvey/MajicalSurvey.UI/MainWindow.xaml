@@ -17,7 +17,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="pass_survey" Content="Pass a survey" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Height="150"  
+        <Button x:Name="pass_survey" Content="Pass survey" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Height="150"  
                 VerticalAlignment="Center" Width="300" Click="pass_survey_Clicked" Background="Azure"/>
         <Button x:Name="create_survey" Grid.Column="0" Grid.Row="0" Content="Create new survey" HorizontalAlignment="Center" 
                 Height="150"  VerticalAlignment="Center" Width="300" Click="create_survey_Clicked" Background="Azure"/>

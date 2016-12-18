@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Create new survey" Height="800" Width="900" WindowState="Maximized" FontSize="17" FontFamily="Aria">
+        Title="Create new survey" Height="1000" Width="1000" WindowState="Maximized" FontSize="17" FontFamily="Aria">
 
     <Window.Background>
         <ImageBrush ImageSource="Pictures/tree.jpg"/>
@@ -44,7 +44,7 @@
             <TextBlock Grid.Column="0" Grid.Row="0" Name="survey_textblock" Text="Name your survey" Height="30" Width="200" HorizontalAlignment="Center"
                        VerticalAlignment="Center" FontSize="19" TextWrapping="Wrap"/>
             <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Name="Survey_name" 
-                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="200" 
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="250" 
                      VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" FontStyle="Italic"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Put a name of the question"

@@ -129,6 +129,7 @@ namespace MajicalSurvey.UI
             if (m == 0)
             {
                 MessageBox.Show("You haven't chosen any answer", "Oops");
+                return;
             }
         }
     }
