@@ -29,10 +29,8 @@ namespace MajicalSurvey.UI
         {
             InitializeComponent();
             surveyRepo = new SurveyRepository();
-            
-
+           
             var surveysList = surveyRepo.GetAllSurveys();
-
             survey_listview.ItemsSource = surveysList;
         }
 
