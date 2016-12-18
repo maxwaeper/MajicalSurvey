@@ -70,18 +70,18 @@ namespace MajicalSurvey.UI
         public void New_question()
         {
 
-            var survey = S; // это выбранный пользователем опрсник
-            surveyName.Text = survey.Name; // Название опросника
+            var survey = S; 
+            surveyName.Text = survey.Name; 
 
-            list_question = qr.GetAllQuestions(S.Name); // Присваивание вопросов
+            list_question = qr.GetAllQuestions(S.Name); 
             Number.Text = (k+1).ToString();
 
-            questionName.Text = (list_question[k]).Name; // Название вопроса
+            questionName.Text = (list_question[k]).Name; 
 
             list_answer = ar.GetAllAnswers()
-                .Where(x => x.Question.Name == list_question[k].Name).ToList(); // Присваивание ответов
+                .Where(x => x.Question.Name == list_question[k].Name).ToList(); 
 
-            for (int i = 0; i < list_answer.Count; i++) // Название ответов
+            for (int i = 0; i < list_answer.Count; i++) 
             {
                 list_radio[i].Visibility = Visibility.Visible;
                 list_radio[i].Content = list_answer[i].RadioButtonName;
@@ -120,7 +120,7 @@ namespace MajicalSurvey.UI
                 MessageBox.Show("You haven't chosen any answer", "Oops");
                 return;
             }
-            //отправка данных в бд
+
             ur.Insert(new Users { Answers = user_list_answer, Name = UserName});
 
             ur.Save();
