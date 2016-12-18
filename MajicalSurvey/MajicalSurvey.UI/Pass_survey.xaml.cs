@@ -27,6 +27,7 @@ namespace MajicalSurvey.UI
         List<Questions> list_question = new List<Questions>();
         AnswerRepository ar = new AnswerRepository();
         UsersRepository ur = new UsersRepository();
+        public Surveys S { get; set; }
 
         List<Answers> list_answer = new List<Answers>();
         List<Answers> user_list_answer = new List<Answers>();
@@ -34,19 +35,14 @@ namespace MajicalSurvey.UI
 
         int k = 0;
 
-        public Pass_survey()
+        public Pass_survey(Surveys s)
         {
             InitializeComponent();
-
-            // c.Close();  я пыталась закрыть предыдущее окно 
-
-
             foreach (RadioButton r in answer_stackpanel.Children)
             {
                 list_radio.Add(r);
             }
-
-            New_question();
+            S = s;
         }
 
         private void Next_Clicked(object sender, RoutedEventArgs e)
@@ -61,10 +57,9 @@ namespace MajicalSurvey.UI
         }
         public void New_question()
         {
-            ChooseSurvey c = new ChooseSurvey();
-            var survey = c.s; // это выбранным пользователем опрсник
+
+            var survey = S; // это выбранный пользователем опрсник
             surveyName.Text = survey.Name; // Название опросника
-           
 
             list_question = survey.Questions; // Присваивание вопросов
             Number.Text = k.ToString();
@@ -99,19 +94,19 @@ namespace MajicalSurvey.UI
 
         private void Complete_Clicked(object sender, RoutedEventArgs e)
         {
-            //отправка данных в бд
+        //    //отправка данных в бд
 
-            foreach (Answers a in list_answer) ar.Insert(a);
+        //    foreach (Answers a in list_answer) ar.Insert(a);
 
-            ChooseSurvey c = new ChooseSurvey();
-            var user = c.u; // создание пользователя
-            user.Answers = list_answer;
-            ur.Insert(user);
+        //    ChooseSurvey c = new ChooseSurvey();
+        //    var user = c.u; // создание пользователя
+        //    user.Answers = list_answer;
+        //    ur.Insert(user);
 
-            ur.Save();
+        //    ur.Save();
 
-            MessageBox.Show("Survey is passed", "Well done!");
-            Close();
+        //    MessageBox.Show("Survey is passed", "Well done!");
+        //    Close();
         }
 
         public void Save_answer()
