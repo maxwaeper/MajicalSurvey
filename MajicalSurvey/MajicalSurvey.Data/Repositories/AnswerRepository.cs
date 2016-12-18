@@ -17,7 +17,7 @@ namespace MajicalSurvey.Data
             _context = new Context();
         }
 
-        public List<Answers> GetAllAnswers(int questionId)
+        public List<Answers> GetAllAnswers(int questionId)//delete questionId cause os uselessnes
             //по номеру вопроса возвращает список вариантов ответов
         {
             return _context.Answers.Include(x => x.Question).ToList();

@@ -1,7 +1,7 @@
 ﻿using System;
 using MajicalSurvey.Data;
 using MajicalSurvey.Data.Entities;
-using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.IRepositories;
 using MajicalSurvey.Data.Repositories;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,24 +28,20 @@ namespace MajicalSurvey.UI
         AnswerRepository ar = new AnswerRepository();
         List<Answers> list_answer = new List<Answers>();
         List<RadioButton> list_radio = new List<RadioButton>();
+        IQuestionRepository questionRepo;
 
-        public Pass_survey()
+        public Pass_survey(Surveys s)
         {
             InitializeComponent();
-
-            ChooseSurvey c = new ChooseSurvey();
+            questionRepo = new QuestionRepository();
             // c.Close();  я пыталась закрыть предыдущее окно 
-
-            var survey = c.s; // это выбранным пользователем опрсник
-
-
             foreach (RadioButton r in answer_stackpanel.Children)
             {
                 list_radio.Add(r);
             }
-
-            surveyName.Text = survey.Name;
-            list_question = survey.Questions;
+            s.Questions = questionRepo.GetAllQuestions(s.Name);
+            surveyName.Text = s.Name;
+            list_question = s.Questions;
 
 
 
