@@ -1,7 +1,7 @@
 ﻿using System;
 using MajicalSurvey.Data;
 using MajicalSurvey.Data.Entities;
-using MajicalSurvey.Data.IRepositoties;
+using MajicalSurvey.Data.IRepositories;
 using MajicalSurvey.Data.Repositories;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +71,9 @@ namespace MajicalSurvey.UI
             {
                 list_radio[i].Content = list_answer[i];
             }
+
+            Counter.Text = string.Format("It is {0} question from {1}", k, list_question.Count);
+                
         }
 
         private void previous_Click(object sender, RoutedEventArgs e)
