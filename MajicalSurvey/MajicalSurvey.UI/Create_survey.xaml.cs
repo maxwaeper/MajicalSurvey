@@ -173,5 +173,17 @@ namespace MajicalSurvey.UI
                 Radiobuttons.IsChecked = true;
             }
         }
+
+        private void Save_Changes_Clicked(object sender, RoutedEventArgs e)
+        {
+            // здесь очень хитрый ход. Эта кнопка удаляет изначальную версию вопроса и добавляет новую
+           // в то время как кнопка добавить будет недоступна
+             //   только вот к тем кликам обратиться нельзя
+
+            Add.IsEnabled = false;
+            //Delete_Clicked();
+           // Add_Clicked;
+
+        }
     }
 }
