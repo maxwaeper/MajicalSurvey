@@ -70,6 +70,7 @@ namespace MajicalSurvey.UI
 
             for (int i = 0; i < list_answer.Count; i++) // Название ответов
             {
+                list_radio[i].Visibility = Visibility.Visible;
                 list_radio[i].Content = list_answer[i];
             }
 
