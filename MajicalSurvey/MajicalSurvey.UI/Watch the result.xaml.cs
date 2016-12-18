@@ -140,7 +140,7 @@ namespace MajicalSurvey.UI
                 foreach (var question in questionslist)
                 {
                     int questionID = questionRepo.GetQuestionByName(question.Name);
-                    List<Answers> answers = answersRepo.GetAllAnswers(questionID);
+                    List<Answers> answers = answersRepo.GetAllAnswers();
                     List<string> ans = new List<string>();
                     foreach (var answer in answers)
                     {

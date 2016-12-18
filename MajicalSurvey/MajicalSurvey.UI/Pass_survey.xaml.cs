@@ -29,6 +29,7 @@ namespace MajicalSurvey.UI
         IQuestionRepository qr;
         IUsersRepository ur;
         public Surveys S { get; set; }
+        public string UserName { get; set; }
         public List<Questions> list_question { get; set; } = new List<Questions>();
         public List<Answers> list_answer { get; set; } = new List<Answers>();
         public List<Answers> user_list_answer { get; set; } = new List<Answers>();
@@ -36,7 +37,7 @@ namespace MajicalSurvey.UI
 
         public int k { get; set; }
 
-        public Pass_survey(Surveys s)
+        public Pass_survey(Surveys s,string userName)
         {
             InitializeComponent();
             ar = new AnswerRepository();
@@ -47,23 +48,23 @@ namespace MajicalSurvey.UI
                 list_radio.Add(r);
             }
             S = s;
-
+            UserName = userName;
             New_question();
         }
 
         private void Next_Clicked(object sender, RoutedEventArgs e)
         {
+
+            k++;
+
+            Save_answer();
+
             foreach (RadioButton r in answer_stackpanel.Children)
             {
                 r.IsChecked = false;
                 r.Content = null;
             }
-
-
-            k++;
             New_question();
-
-            Save_answer();
 
         }
         public void New_question()
@@ -77,7 +78,7 @@ namespace MajicalSurvey.UI
 
             questionName.Text = (list_question[k]).Name; // Название вопроса
 
-            list_answer = ar.GetAllAnswers((list_question[k]).Id)
+            list_answer = ar.GetAllAnswers()
                 .Where(x => x.Question.Name == list_question[k].Name).ToList(); // Присваивание ответов
 
             for (int i = 0; i < list_answer.Count; i++) // Название ответов
@@ -97,29 +98,16 @@ namespace MajicalSurvey.UI
 
         }
 
-        private void previous_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (RadioButton r in answer_stackpanel.Children) r.IsChecked = false;
-            k--;
-            New_question();
-            Save_answer();
-        }
 
         private void Complete_Clicked(object sender, RoutedEventArgs e)
         {
-            //    //отправка данных в бд
+            //отправка данных в бд
+            ur.Insert(new Users { Answers = user_list_answer, Name = UserName});
 
-            //    foreach (Answers a in list_answer) ar.Insert(a);
+            ur.Save();
 
-            //    ChooseSurvey c = new ChooseSurvey();
-            //    var user = c.u; // создание пользователя
-            //    user.Answers = list_answer;
-            //    ur.Insert(user);
-
-            //    ur.Save();
-
-            //    MessageBox.Show("Survey is passed", "Well done!");
-            //    Close();
+            MessageBox.Show("Survey is passed", "Well done!");
+            Close();
         }
 
         public void Save_answer()
@@ -129,19 +117,18 @@ namespace MajicalSurvey.UI
             {
                 if (r.IsChecked == true)
                 {
-                    Answers a = new Answers();
-                    a.RadioButtonName = r.Content.ToString();
-                    a.Question = list_question[k];
-                    user_list_answer.Insert(k, a);
+                    user_list_answer.Add(new Answers
+                    {
+                        RadioButtonName = r.Content.ToString(),
+                        Question = list_question[k]
+                    });
+                    m++;
                 }
+            }
 
-                else m++;
-
-                if (m == list_answer.Count)
-                {
-                    MessageBox.Show("You haven't chosen any answer", "Oops");
-                    return;
-                }
+            if (m == 0)
+            {
+                MessageBox.Show("You haven't chosen any answer", "Oops");
             }
         }
     }

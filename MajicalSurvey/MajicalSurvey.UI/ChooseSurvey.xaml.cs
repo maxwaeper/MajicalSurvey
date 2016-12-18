@@ -49,8 +49,8 @@ namespace MajicalSurvey.UI
                 MessageBox.Show("You haven't chosen any survey","Oops");
                 return;
             }
-            
-            Pass_survey next = new Pass_survey(s);
+            var userName = TextBoxEnterName.Text;
+            Pass_survey next = new Pass_survey(s,userName);
             next.ShowDialog();
         }
     }

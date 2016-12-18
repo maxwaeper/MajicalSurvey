@@ -40,7 +40,7 @@ namespace MajicalSurvey.UI
         private void pass_survey_Clicked(object sender, RoutedEventArgs e)
         {
             ChooseSurvey pass = new ChooseSurvey();
-            pass.ShowDialog();
+             pass.ShowDialog();
         }
     }
 }
