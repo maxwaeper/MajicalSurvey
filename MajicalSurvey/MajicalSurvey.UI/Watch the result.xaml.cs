@@ -46,15 +46,15 @@ namespace MajicalSurvey.UI
 
 
         }
-
+        
 
         private void Show_button_Clicked(object sender, RoutedEventArgs e)
         {
             MethodsForStatistics methods = new MethodsForStatistics();
             OverallData.Visibility = Visibility.Visible;
             var surveysList = surveyRepo.GetAllSurveys();
-
-
+            //nameTheType.Text = "Choose the type of statistics"; 
+            //Choose.P = "Choose the type of statistics";
             if (ComboBox.SelectedItem == all)
             //do methods for all
             {
@@ -168,7 +168,7 @@ namespace MajicalSurvey.UI
                             Answers = answer.RadioButtonName,
                             Chosen = usersnum,
                             Proportion = propor,
-                            Persentage = percent
+                            Percentage = percent
                         });
                        
                     }

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Create new survey" Height="800" Width="900" WindowState="Maximized" FontSize="17" FontFamily="Aria">
+        Title="Create new survey" Height="800" Width="900" WindowState="Maximized" FontSize="17" FontFamily="Aria" Background="LemonChiffon">
 
-    <Window.Background>
+    <!--<Window.Background>
         <ImageBrush ImageSource="Pictures/tree.jpg"/>
-    </Window.Background>
-    <Grid>
+    </Window.Background>-->
+    <Grid Height="769" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <ListView Grid.Column="0" x:Name="listView" HorizontalAlignment="Center" Height="Auto"  
-                  VerticalAlignment="Top" Width="500" Margin="85" Grid.RowSpan="4" MouseDoubleClick="listView_MouseDoubleClick">
+                  VerticalAlignment="Top" Width="450" Margin="-69,167,15,0" MouseDoubleClick="listView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="430"/>
@@ -42,10 +42,10 @@
 
 
             <TextBlock Grid.Column="0" Grid.Row="0" Name="survey_textblock" Text="Name your survey" Height="30" Width="200" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontSize="19" TextWrapping="Wrap"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Name="Survey_name" 
-                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="200" 
-                     VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" FontStyle="Italic"/>
+                       VerticalAlignment="Center" FontSize="19" TextWrapping="Wrap" Margin="-422,49,445,24"/>
+            <TextBox Grid.Row="0" Name="Survey_name" 
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="350" 
+                     VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" FontStyle="Italic" Margin="-241,49,114,24"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Put a name of the question"
                Height="30" VerticalAlignment="Center"/>
@@ -53,7 +53,7 @@
                      VerticalAlignment="Center" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" 
                      AcceptsReturn="True"/>
         </Grid>
-        
+
         <StackPanel Grid.Column="1" Grid.Row="1" Name="Variant_stackpanel">
             <RadioButton Content="Radiobuttons" Name="Radiobuttons" Margin="5" Checked="Radiobuttons_Checked"/>
             <RadioButton Content="Checkboxes" Name="Checkboxes" Margin="5" Checked="Current_version_exeption"/>
@@ -61,25 +61,25 @@
             <RadioButton Content="Number" Name="Number" Margin="5" Checked="Current_version_exeption"/>
         </StackPanel>
 
-        
-            <Grid Name="grid" Grid.Column="1" Grid.Row="2" Margin="10 10 0 0" Visibility="Hidden">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="10*" Name="with_textboxes"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions >
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition/>
-                    <RowDefinition />
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+
+        <Grid Name="grid" Grid.Column="1" Grid.Row="2" Margin="10 10 0 0" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*" Name="with_textboxes"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
 
             <StackPanel Name="stackpanel_textboxes"  Grid.Column="1" Grid.RowSpan="10">
@@ -105,20 +105,20 @@
             <Label Content="8"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="7" Margin="3" />
             <Label Content="9"  HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="8" Margin="3"/>
             <Label Content="10" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="9" Margin="3"/>
-               
-            </Grid>
+
+        </Grid>
 
 
         <Button Grid.Column="0" Grid.Row="2" Content="Save changes" x:Name="ButtonSaveChanges"  Width="120" Height="50" Click="Save_Changes_Clicked"
-                HorizontalAlignment="Right" Margin="0 50 15 0" IsEnabled="False"/>
-        
-        <Button Grid.Column="0" Grid.Row="2" Content="Add" Name="Add" Width="70" Height="50" Click="Add_Clicked"
+                HorizontalAlignment="Right" Margin="0 50 15 0" IsEnabled="False" Background="Wheat"/>
+
+        <Button Grid.Column="0" Grid.Row="2" Content="Add" Name="Add" Width="70" Height="50" Click="Add_Clicked" Background="Tan"
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 40" />
         <Button Grid.Column="0" Grid.Row="2" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Width="70" Height="50" Click="Delete_Clicked"  Margin="40"/>
+                Width="70" Height="50" Click="Delete_Clicked"  Margin="40" Background="Wheat"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Finish" Width="70" Height="50" HorizontalAlignment="Left" 
-              VerticalAlignment="Bottom"  Margin="40" Click="Finish_Clicked"/>
-       
+              VerticalAlignment="Bottom"  Margin="40" Click="Finish_Clicked" Background="Tan"/>
+
 
     </Grid>
 </Window>

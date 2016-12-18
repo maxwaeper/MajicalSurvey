@@ -12,6 +12,6 @@ namespace MajicalSurvey.Data
         public string Answers { get; set; }
         public float Chosen { get; set; }
         public float Proportion { get; set; }
-        public string Persentage { get; set; }
+        public string Percentage { get; set; }
     }
 }

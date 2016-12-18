@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="Pass a survey" Height="1000" Width="1000" WindowState="Maximized" FontSize="17">
+        Title="Pass a survey" Height="1000" Width="1000" WindowState="Maximized" FontSize="17" Background="LemonChiffon">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -41,7 +41,7 @@
             <RadioButton Width="500" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="8" Background="LightCoral" Visibility="Hidden"/>
 
         </StackPanel>
-        <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked"/>
+        <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked" Background="Tan"/>
         <Button Name="Complete" Content="Complete" Grid.Row="3" Grid.Column="1" Width="80" Height="70" HorizontalAlignment="Center"
                 Visibility="Collapsed" Click="Complete_Clicked"/>
 

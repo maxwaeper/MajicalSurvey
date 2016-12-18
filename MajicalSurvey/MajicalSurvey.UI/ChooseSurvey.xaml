@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MajicalSurvey.UI"
         mc:Ignorable="d"
-        Title="ChooseSurvey" Height="1000" Width="1000" FontSize="19" WindowState="Maximized">
+        Title="ChooseSurvey" Height="1000" Width="1000" FontSize="19" WindowState="Maximized" Background="LemonChiffon">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -30,8 +30,8 @@
         <TextBox x:Name="TextBoxEnterName" Grid.Column="1" Margin="10,0,10,70" FontSize="20" Grid.Row="1" VerticalAlignment="Top" Width="350"
                  FontStyle="Italic"/>
         <Button x:Name="ButtonCancel" Grid.Column="1" Grid.Row="2" Content="Home" HorizontalAlignment="Left" Width="100" Height="70" 
-                Margin="30" Click="Cancel_Clicked" VerticalAlignment="Top"/>
+                Margin="30" Click="Cancel_Clicked" VerticalAlignment="Top" Background="Wheat"/>
         <Button x:Name="ButtonProceed" Grid.Column="1" Grid.Row="2" Content="Start" HorizontalAlignment="Right" Width="100" Height="70"
-                Click="ButtonProceed_Click" Margin="30" VerticalAlignment="Top"/>
+                Click="ButtonProceed_Click" Margin="30" VerticalAlignment="Top" Background="Tan"/>
     </Grid>
 </Window>
