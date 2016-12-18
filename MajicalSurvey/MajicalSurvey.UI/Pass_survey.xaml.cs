@@ -106,11 +106,9 @@ namespace MajicalSurvey.UI
             {
                 if (r.IsChecked == true)
                 {
-                    user_list_answer.Add(new Answers
-                    {
-                        RadioButtonName = r.Content.ToString(),
-                        Question = list_question[k - 1]
-                    });
+                    user_list_answer.AddRange(
+                        list_answer
+                        .Where(x => x.RadioButtonName == r.Content.ToString()).ToList());
                     m++;
                 }
             }
@@ -121,10 +119,17 @@ namespace MajicalSurvey.UI
                 return;
             }
             //отправка данных в бд
-            ur.Insert(new Users { Answers = user_list_answer, Name = UserName});
-
+                foreach (var item in user_list_answer)
+                {
+                    ur.Insert(new Users
+                    {
+                        Answers = ar.GetAllAnswers()
+                        .Where(x=>x.RadioButtonName==item.RadioButtonName).ToList(),
+                        Name = UserName
+                    });
+                }
             ur.Save();
-
+            
             MessageBox.Show("Survey is passed", "Well done!");
             Close();
         }
@@ -136,11 +141,8 @@ namespace MajicalSurvey.UI
             {
                 if (r.IsChecked == true)
                 {
-                    user_list_answer.Add(new Answers
-                    {
-                        RadioButtonName = r.Content.ToString(),
-                        Question = list_question[k-1]
-                    });
+                    user_list_answer.AddRange(list_answer
+                        .Where(x=>x.RadioButtonName==r.Content.ToString()).ToList());
                     m++;
                 }
             }
