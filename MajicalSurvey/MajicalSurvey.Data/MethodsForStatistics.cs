@@ -66,15 +66,16 @@ namespace MajicalSurvey.Data
             //по айди вопроса возвращает список ответивших
         {
             List<Users> usersList = new List<Users>();
-            List<Answers> a = answer.GetAllAnswers();
-            foreach (var answer in a)
+            List<Users> u = new List<Users>();
+            List<Answers> a = answer.GetAllAnswers().Where(x => x.Question.Id == questionID).ToList();
+            foreach (var ans in a)
                 {
-                    List<Users> u = GetUserssByAnswersId(answer.Id);
-                    foreach (var item in u)
-                    {
-                        usersList.Add(item);
-                    }
-              
+                    u = GetUserssByAnswersId(ans.Id);
+                foreach (var item in u)
+                {
+                    usersList.Add(item);
+                }
+                   
                }
             return usersList;
         }
@@ -87,7 +88,7 @@ namespace MajicalSurvey.Data
            List<Users> usersList = new List<Users>();
           foreach (var question in l)
            {
-              List<Answers> a = answer.GetAllAnswers();
+              List<Answers> a = answer.GetAllAnswers().Where(x=>x.Question.Id == question.Id).ToList();
                 foreach (var answer in a)
                 {
                     List<Users> u = GetUserssByAnswersId(answer.Id);

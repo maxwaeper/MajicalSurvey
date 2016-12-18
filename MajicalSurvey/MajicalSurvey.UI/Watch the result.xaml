@@ -50,26 +50,39 @@
             <TextBlock Name="third" Grid.Column="0" Grid.Row="2" Width="300" VerticalAlignment="Center"
                        HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
-            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="150" VerticalAlignment="Center"/>
+            <TextBlock Name="first_n" Grid.Column="1" Grid.Row="0" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBlock Name="second_n" Grid.Column="1" Grid.Row="1" Width="50" VerticalAlignment="Center" />
             <TextBlock Name="third_n" Grid.Column="1" Grid.Row="2" Width="50" VerticalAlignment="Center"/>
         </Grid>
 
-        
-        <DataGrid Name="data_all" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" 
-                  AutoGenerateColumns="True">
 
+        <!--<ListView Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="listview_all" HorizontalAlignment="Center" Height="Auto"  
+                  VerticalAlignment="Top" Width="350" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" Width="25"/>
+                    <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Name}" Width="300"/>
+                </GridView>
+            </ListView.View>
+        </ListView>-->
+        
+        <DataGrid Name="data_all" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True">
+            <!--<DataGrid.Columns>-->
+                <!--<DataGridTextColumn x:Name="data_allColumn1" Header="Survey №" Width="100"/>
+                <DataGridTextColumn x:Name="data_allColumn2" Header="Name" Width="200"/>
+                <DataGridTextColumn x:Name="data_allColumn3" Header="Number of users" Width="200"/>-->
+            <!--</DataGrid.Columns>-->
         </DataGrid>
         
          <DataGrid Name="data_one" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Visibility="Hidden" AutoGenerateColumns="True" 
                   HorizontalContentAlignment="Center">
-            <DataGrid.Columns>
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="Question" Width="100"/>
                 <DataGridTextColumn Header="Possible answers" Width="200"/>
                 <DataGridTextColumn Header="Number of given answers" Width="200"/>
                 <DataGridTextColumn Header="Proportion" Width="100"/>
                 <DataGridTextColumn Header="%" Width="100"/>
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
         </DataGrid>
     </Grid>
 
