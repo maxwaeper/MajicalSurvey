@@ -9,11 +9,9 @@ namespace MajicalSurvey.Data.IRepositories
 {
     public interface IUsersRepository : IRepository<Users>
     {
-        //List<Users> GetUsersAnswers(int answersId);
+       
         List<Users> GetAllUsers();
 
-        //Users AnswersOfAUser(string name);
-
-        //List<Users> GetAnswersOfUser(int id);
+       
     }
 }
