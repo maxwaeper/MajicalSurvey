@@ -92,9 +92,9 @@ namespace MajicalSurvey.UI
                 _answer.Insert(item);
             }
             _answer.Save();
-            MessageBox.Show("Survey created");
+            MessageBox.Show("Survey created", "Well done!");
             Close();
-           //_survey
+           
         }
 
         public void Clear_info()

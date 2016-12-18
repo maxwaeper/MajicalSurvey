@@ -36,6 +36,8 @@
 
         <Button Name="previous" Content="Previous" Grid.Row="3" Grid.Column="0" Width="70" Height="70" HorizontalAlignment="Center" Click="previous_Click" />
         <Button Name="next" Content="Next" Grid.Row="3" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" Click="Next_Clicked"/>
+        <Button Name="Complete" Content="Complete" Grid.Row="3" Grid.Column="1" Width="80" Height="70" HorizontalAlignment="Center"
+                Visibility="Collapsed" Click="Complete_Clicked"/>
 
 
     </Grid>

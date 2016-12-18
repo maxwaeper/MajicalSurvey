@@ -28,6 +28,7 @@ namespace MajicalSurvey.UI
 
         public SurveyRepository sr { get; set; }
         public Surveys s { get; set; }
+        public Users u { get; set; }
 
         public ChooseSurvey()
         {
@@ -45,7 +46,8 @@ namespace MajicalSurvey.UI
         {
 
             s = sr.GetSurveyByName(survey_listview.SelectedItem.ToString());
-
+            u.Name = TextBoxEnterName.Text;
+            
 
             Pass_survey next = new Pass_survey();
             next.ShowDialog();
