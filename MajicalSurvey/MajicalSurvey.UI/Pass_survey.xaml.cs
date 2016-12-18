@@ -101,6 +101,25 @@ namespace MajicalSurvey.UI
 
         private void Complete_Clicked(object sender, RoutedEventArgs e)
         {
+            int m = 0;
+            foreach (RadioButton r in answer_stackpanel.Children)
+            {
+                if (r.IsChecked == true)
+                {
+                    user_list_answer.Add(new Answers
+                    {
+                        RadioButtonName = r.Content.ToString(),
+                        Question = list_question[k - 1]
+                    });
+                    m++;
+                }
+            }
+
+            if (m == 0)
+            {
+                MessageBox.Show("You haven't chosen any answer", "Oops");
+                return;
+            }
             //отправка данных в бд
             ur.Insert(new Users { Answers = user_list_answer, Name = UserName});
 
@@ -120,7 +139,7 @@ namespace MajicalSurvey.UI
                     user_list_answer.Add(new Answers
                     {
                         RadioButtonName = r.Content.ToString(),
-                        Question = list_question[k]
+                        Question = list_question[k-1]
                     });
                     m++;
                 }
